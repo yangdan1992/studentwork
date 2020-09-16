@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="link.css">
+<title>游玩</title>
+<link rel="stylesheet" href="jquery-easyui-1.8.8/themes/default/easyui.css" type="text/css">
+<link rel="stylesheet" href="jquery-easyui-1.8.8/themes/icon.css" type="text/css">
+<script type="text/javascript" src="jquery-easyui-1.8.8/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-easyui-1.8.8/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="jquery-easyui-1.8.8/locale/easyui-lang-zh_CN.js"></script>
+<script>
+	var ac=0;
+	var speed=0;
+	var speedbyC=0;
+	var timeflow=1;
+	var time=0;
+	var fadd;
+</script>
+</head>
+
+<body>
+	<div id="divbg">
+		<p id="showinf" style="font-size: 30px; color: #FF0004"></p>
+		<div style="margin-top: 24%; margin-left: 3%;text-align: left;">
+			<div id="power" style="width: 10px; height: 300px; position: relative; left: 100px;"></div>
+			<p style="color: red; font-size: 20px; font-weight: 900">加速度</p>
+		</div>
+		<img src="images/火箭.png" style="position: absolute; top: 40%; left: 40%; width: 225px;">
+		<button onClick="create()">创建新宇宙</button>
+	</div>
+	
+	<script type="text/javascript">
+		$("#power").slider({
+			mode:"v",
+			min:-100,
+			max:100,
+			value:0,
+			rule:[-100,'|','|',-50,'|','|',0,'|','|',50,'|','|',100],
+			showTip:true
+		});
+		$("#power").slider({
+		onChange:function(newValue){
+			ac=newValue;
+		}
+	});
+	var x=0;
+	var divbg=document.getElementById("divbg");
+	var btn=document.getElementsByTagName("button")[0];
+	function add()
+	{
+		speed=speed+ac;
+		if(speed>300000)	speed=300000;
+		if(speed<1)			speed=0;
+		speedbyC=speed/300000;
+		timeflow=(1/((1-speedbyC**2)));
+		time=time+timeflow;
+		$("#showinf").text("速度："+speedbyC.toFixed(2)+"光速;时间："+time.toFixed(2)+"十万年");
+		if(x>-7500){
+			divbg.style.backgroundPositionX=x+"px";
+			x=x-speed/30000;
+		}else{
+			clearInterval(fadd);
+			btn.style.display="block";
+		}
+	}
+	fadd=setInterval(add,1);
+	function create(){
+		ac=0;speed=0;speedbyC=0;timeflow=1;time=0;x=0;
+		btn.style.display="none";
+		fadd=setInterval(add,1);
+	}
+	</script>
+</body>
+</html>
