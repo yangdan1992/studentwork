@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片轮播（自动）</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizding:border-box
+	}
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow:hidden;
+		background-color: #333;
+		width: 400px;
+	}
+	
+	li {
+		float: left;
+		width: 25%;
+	}
+	
+	li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 14px 30px;
+		text-decoration: none;
+	}
+	
+	li a:hover {
+		background-color: #212121;
+	}
+	li .active{
+		background-color: #212121;
+	}
+	body{
+		font-family: Verdana,sans-serif;
+		text-align: center;
+	}
+	.slideshow-container {
+		position: relative;
+		margin: auto;
+	}
+	.mySlides {display:none;
+	}
+	.mySlides img{
+		width: 100%;
+	}
+	.text {
+		color: #f2f2f2;
+		font-size: 12px;
+		padding: 8px 12px;
+		position: absolute;
+		bottom: 8px;
+		width: 100%;
+		text-align: center;
+	}
+	.numbertext {
+		color: #f2f2f2;
+		font-size: 12px;
+		padding: 8px 12px;
+		position: absolute;
+		margin-bottom: 0;
+	}
+	.fade {
+		-webkit-animation-name: fade;
+		-webkit-animation-duration: 1.5s;
+		animation-name: fade;
+	    animation-name: fade;
+		
+	}
+	@-webkit-keyframes fade {
+		from {opacity: .4}
+		to {opacity: 1}
+	}	
+	@keyframes fade {
+		from {opacity: .4}
+		to {opacity: 1}
+	}
+	.left{
+		position: absolute;
+		z-index:1;
+		top:40%;
+		cursor: pointer;
+	}
+	.right{
+		position: absolute;
+		z-index:1;
+		top: 40%;
+		right:0;
+		cursor: pointer;
+	}
+	.summary{
+	width: 650px;
+	margin-top: 3%;
+	;
+	margin-left: 8%;
+	text-align: center;
+	float: left;
+	font-size: 24px;
+	color: #3C3767;
+	}
+	.colorful1{
+		margin-top: 15%;
+		margin-left: 30%;
+	}
+	.colorful2{
+		margin-top: -8%;
+		margin-left: 110%;
+	}
+	.colorful3{
+		margin-top: -10%;
+		margin-left: 20%;
+	}
+	.footer{
+		clear: both;
+		background: #333;
+		color:#fff;
+		width: 100%;
+		height: 80px;
+		line-height: 500%;
+	}
+	</style>
+</head>
+
+<body>
+<div style="background: #333;">
+	<ul>
+		<li><a href="主页.html" class="active">首页</a></li>
+		<li><a href="大理美食.html">大理</a></li>
+		<li><a href="丽江景点">丽江</a></li>
+		<li><a href="昆明美食.html">昆明</a></li>
+	</ul>
+</div>
+	
+<div class="left">
+	<img src="images/左箭头.PNG" onClick="showSlides2()" alt="" width="50%">
+</div>
+<div class="right">
+	<img src="images/右箭头.PNG" onClick="showSlides1()" alt="" width="50%">
+</div>
+<div class="slideshow-container">
+	<div class="mySlides fade">
+		<div class="numbertext">1 / 3</div>
+		<img src="images/云南.jpg" alt="">
+		<div class="text" style="font-size: 24px; color: #fff;">彩云之南，孔雀之乡——昆明</div>
+	</div>
+	<div class="mySlides fade">
+		<div class="numbertext">2 / 3</div>
+		<img src="images/大理.jpg" alt="">
+		<div class="text" style="font-size: 24px; color: #fff;">彩云之南，孔雀之乡——大理</div>
+	</div>
+	<div class="mySlides fade">
+		<div class="numbertext">3 / 3</div>
+		<img src="images/丽江.jpg" alt="">
+		<div class="text" style="font-size: 24px; color: #fff;">彩云之南，孔雀之乡——丽江</div>
+	</div>
+</div>
+
+<div class="summary" >
+	云南（简称云或滇），中华人民共和国省级行政区，素有动物王国、有色金属王国之称，云南即“彩云之南”、“七彩云南”。
+云南位于中国西南的边陲，东面是广西和贵州省，北面是四川省，西北面是西藏自治区；属亚热带季风气候、热带季风气候，境内拥有丽江古城、石林等旅游景点。
+南气候基本属于亚热带高原季风型，立体气候特点显著，类型众多、年温差小、日温差大、干湿季节分明、气温随地势高低垂直变化异常明显。滇西北属寒带型气候，长冬无夏，春秋较短；滇东、滇中属温带型气候，四季如春，遇雨成冬；滇南、滇西南属低热河谷区，有一部分在北回归线以南，进入热带范围，长夏无冬，一雨成秋。在一个省区内，同时具有寒、温、热（包括亚热带）三带气候。云南河川纵横，湖泊众多。全省境内径流面积在100平方公里以上的河流有889条，分属长江（金沙江）、珠江（南盘江）、元江（红河）、澜沧江（湄公河）、怒江（萨尔温江）、大盈江（伊洛瓦底江）6大水系。红河和南盘江发源于云南境内，其余为过境河流。
+</div>
+
+<div style="width: 20%; float: left">
+	<div class="colorful1">
+		<img src="images/.jpg" alt="">
+	</div>
+	<div class="colorful2">
+		<img src="images/jpg2" alt="">
+	</div>
+	<div class="colorful3">
+		<img src="images/jpg3" alt="">
+	</div>
+</div>
+
+<div class="footer">
+	Designed by Lily & Jelly
+</div>
+	
+</body>
+<script>
+var slideIndex = 0;
+showSlides1();
+	
+function showSlides1() {
+		var i;
+		var slides = document.getElementsByClassName("mySlides");
+		for (i = 0; i < slides.length;i++) {slides[i].style.display = "none";
+	}
+	if (slideIndex < 0){slideIndex = 2}
+	slides[slideIndex].style.display = " block";
+	slideIndex--;
+}
+function showSlides2() {
+		var i;
+		var slides = document.getElementsByClassName("mySlides");
+		for (i = 0; i < slides.length;i++) {slides[i].style.display = "none";
+	}
+	if (slideIndex >=slides.length){slideIndex = 0}
+	slides[slideIndex].style.display = " block";
+	slideIndex++;
+}
+	</script>
+</html>
