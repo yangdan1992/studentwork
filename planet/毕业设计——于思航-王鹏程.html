@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<style>
+		body{
+			background-image: url(images/bg.jpg);
+			background-size: cover;
+			overflow: hidden;
+		}
+		a{
+			color: #1600FF;
+			text-decoration: none;
+		}
+		a:hover {color: #FF0000;}
+		a:active {color: #FFF000;}
+		.mercury{
+			background: url(images/水星.png);
+			background-size: cover;
+			width: 250px;
+			height: 250px;
+			text-align: center;
+			margin-top: 50px;
+			animation: move 1.5s ease-in-out infinite alternate;
+			animation-delay: .3s;
+		}
+		.mercurytext{
+			padding-top: 40%;		
+		}
+		.venus{
+			background: url(images/金星.png) no-repeat;
+			background-size: 80%;
+			background-position: center;
+			width: 320px;
+			height: 320px;
+			text-align: center;
+			margin-left: 700px;
+			margin-top: 250px;
+			animation: move2 1s ease-in-out infinite alternate;
+			animation-delay: .3s;
+		}
+		.venustext{
+			padding-top: 40%;
+		}
+		.earth{
+			background: url(images/地球.png);
+		    background-size: cover;
+			width: 340px;
+			height: 340px;
+			text-align: center;
+			margin-left: 800px;
+			margin-top: -680px;
+			animation: move2 1.5s ease-in-out infinite alternate;
+			animation-delay: .3s;
+		}
+		.earthtext{
+			padding-top: 40%;
+		}
+		.jupiter{
+			background: url(images/木星.png);
+		    background-size: cover;
+			width: 400px;
+			height: 400px;
+			text-align: center;
+			margin-top: -550px;
+			margin-left: 300px;
+			animation: move2 1s ease-in-out infinite alternate;
+		}
+		.jupitertext{
+			padding-top: 40% ;
+		}
+		.mars{
+			background: url(images/火星.png);
+		    background-size: cover;
+			width: 330px;
+			height: 330px;
+			text-align: center;
+			float: right;
+			margin-top: -360px;
+			animation: move1 1s ease-in-out infinite alternate;
+			animation-delay: .2s;
+		}
+		.marstext{
+			padding-top: 40% ;
+		}
+		.neptune{
+			background: url(images/海王星.png);
+		    background-size: cover;
+			width: 370px;
+			height: 370px;
+			text-align: center;
+			animation: move1 1.5s ease-in-out infinite alternate;
+			animation-delay: .5s;
+		}
+		.neptunetext{
+			padding-top: 45% ;
+		}
+		.uranus{
+			background: url(images/天王星.png);
+		    background-size: cover;
+			width: 280px;
+			height: 280px;
+			text-align: center;
+			margin-top: -350px;
+			margin-left: 400px;
+			animation: move 1s ease-in-out infinite alternate;
+			animation-delay: .5s;
+		}
+		.uranustext{
+			padding-top: 40% ;
+		}
+		.sun{
+			background: url(images/太阳.png);
+		    background-size: cover;
+			width: 600px;
+			height: 600px;
+			text-align: center;
+			float: right;
+			margin-top: -280px;
+			animation: move1 1s ease-in-out infinite alternate;
+		}
+		.suntext{
+			padding-top: 40% ;
+		}
+		.saturn{
+			background: url(images/土星.png);
+		    background-size: cover;
+			width: 300px;
+			height: 215px;
+			float: right;
+			text-align: center;
+			margin-top: -45%;
+			margin-right: -15%;
+			animation: move 1s ease-in-out infinite alternate;
+		}
+		.saturntext{
+			padding-top: 30% ;
+		}
+		.text{
+			color: #FFFF00;
+			width: 50%;
+			text-align: justify;
+			background: #000;
+			opacity: 0.7;
+		}
+		@keyframes move{
+			0%{
+				transform: translate(5px,5px);
+			}
+			100%{
+				transform: translate(0,0);
+			}
+		}
+		@keyframes move1{
+			0%{
+				transform: translate(5px,-5px);
+			}
+			100%{
+				transform: translate(-5px,5px);
+			}
+		}
+		@keyframes move2{
+			0%{
+				transform: translate(-5px,5px);
+			}
+			100%{
+				transform: translate(5px,-5px);
+			}
+		}
+	</style>
+<title>太阳系，亿万繁星荡气回肠的史诗</title>
+</head>
+
+<body>
+	<div class="mercury">
+	     <div class="mercurytext">
+			 <a href="期末设计水星子页.html" target="_blank">水星<br>Mercury</a>
+	   	 </div>
+	</div>
+	<div class="venus">
+         <div class="venustext">
+			 <a href="期末设计金星子页.html" target="_blank"> 金星<br>Venus</a>
+		 </div>
+	</div>
+	<div class="earth">
+         <div class="earthtext">
+			 <a href="期末设计地球子页.html" target="_blank">地球<br>Earth</a>
+		</div>
+    </div>
+    <div class="jupiter">
+         <div class="jupitertext">
+			 <a href="期末设计木星子页.html" target="_blank">木星<br>Jupiter</a>
+		</div>
+    </div>
+    <div class="mars">
+         <div class="marstext">
+			 <a href="期末设计火星子页.html" target="_blank">火星<br>Mars</a>
+		</div>
+    </div>
+    <div class="neptune">
+         <div class="neptunetext">
+			 <a href="期末设计海王星子页.html">海王星<br>Neptune</a>
+		</div>
+    </div>
+    <div class="uranus">
+         <div class="uranustext">
+			 <a href="期末设计天王星子页.html">天王星<br>Uranus</a>
+		</div>
+    </div>
+    <div class="sun">
+         <div class="suntext">
+			 <a href="期末设计太阳子页.html">太阳<br>Sun</a>
+		</div>
+    </div>
+	<div class="saturn">
+         <div class="saturntext">
+			 <a href="期末设计土星子页.html" target="_blank">土星<br>Saturn</a>
+		</div>
+    </div>
+    <div class="text">
+		欢迎来到该太阳系天体介绍网站。在这里，你将会了解太阳系的许多。点击文字以查看具体资料。太阳系是一个受太阳引力约束在一起的行星系统，包括8大行星（由离太阳从近到远的顺序：水星、金星、地球、火星、木星、土星、天王星、海王星）以及至少173颗已知的卫星、5颗已经辨认出来的矮行星、数以亿计的小天体和彗星。太阳系的形成于约46亿年前一个巨型星际分子云的引力坍缩，太阳系内大部分的质量都集中于太阳。
+	</div>
+</body>
+</html>
