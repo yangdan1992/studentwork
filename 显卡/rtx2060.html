@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>rtx2060</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			color: #fff;
+		}
+		.content1{
+			width: 100%;
+			height: 70vh;
+			background: linear-gradient(90deg,black,rgba(55,130,25,1.00));
+		}
+		.content1 img{
+			display: block;
+			float: right;
+			margin-right: 10%;
+			margin-top: -10%;
+		}
+		.content1 .text{
+			padding: 5% 10%;
+		}
+		.content2{
+			width: 100%;
+			height: 50vh;
+			background: #000;
+			text-align: center;
+		}
+		.content2 .text{
+			float: left;
+			width: 20%;
+			margin-top: 10%;
+			line-height: 300%;
+			margin-left: 8%;
+		}
+		.content3{
+			width: 50%;
+			height: 50vh;
+			background:#13391B;
+			float: left;
+			text-align: justify;
+			line-height: 300%;
+		}
+		.content3 .text{
+			margin: 7% 0 0 35%;
+		}
+		.content4{
+			width: 50%;
+			height: 50vh;
+			background:#151414;
+			float: left;
+		}
+		.content5{
+			color: #131313;
+			width: 100%;
+			height: 50vh;
+		}
+		.content5 .text{
+			width: 50%;
+			float: left;
+			padding-top: 5%;
+			padding-left: 3%;
+			font-size: 24px;
+			font-weight: bold;
+			line-height: 200%;
+		}
+		.content5 .pic{
+			width: 40%;
+			padding-top: 2%;
+			padding-bottom: 2%;
+			padding-left: 5%;
+			float: left;
+		}
+		.footer{
+			background: #1A1A1A;
+			height: 15vh;
+			width: 100%;
+			clear: both;
+			text-align: center;
+			line-height: 800%;
+		}
+	</style>
+	<script src="incubator-echarts-4.4.0/dist/echarts.min.js"></script>
+</head>
+
+<body>
+	<div class="content1">
+		<div class="text">
+			<h1>RTX2060</h1>
+			RTX 2060是一款高端显卡，它具有无与伦比的性能<br>几乎可以驾驭所有游戏
+		</div>
+		<img src="images/2060.png">
+	</div>
+	<div class="content2">
+		<div class="text">
+			<span style="font-size: 40px;font-weight: bold;">1650MHz</span><br>核心频率
+		</div>
+		<div class="text">
+			<span style="font-size: 40px;font-weight: bold;">1809MHz</span><br>Boost频率
+		</div>
+		<div class="text">
+			<span style="font-size: 40px;font-weight: bold;">12GHz</span><br>等效显存频率
+		</div>
+	</div>
+	<div class="content3">
+		<div class="text">
+			<span style="font-size: 40px;font-weight: bold;">2176</span>个流处理器<br>
+			<span style="font-size: 40px;font-weight: bold;">48</span>个光栅单元<br>
+			<span style="font-size: 40px;font-weight: bold;">256bit</span>显存位宽<br>
+			<span style="font-size: 40px;font-weight: bold;">8GB</span> GDDR5显存
+		</div>
+	</div>
+	<div class="content4">
+		<div id="main" style="width: 600px;height:400px; margin-left: 15%;"></div>
+	</div>
+	<div class="content5">
+		<div class="text">适合玩的游戏有：<br>CS：GO(极限配置)，泰坦陨落（低画质 60hz），PUGB（极限特效60HZ），只狼：影逝二度（中画质 120hz）</div>
+		<div class="pic"><img src="images/只狼.jpg" width="80%"></div>
+	</div>
+	<div class="footer">
+		Designed by xx & xx
+	</div>
+	
+</body>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+		// 指定图表的配置项和数据
+        var option = {
+			textStyle: {
+				color: '#fff'
+			},
+            title: {
+				text: '价格',
+				left: 'center',
+				top: 20,
+				textStyle: {
+					color: '#fff'
+				}
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			xAxis: {
+				type: 'category',
+				data: ['华硕', '七彩虹', '技嘉', '影驰'],
+			},
+			yAxis: {
+				type: 'value'
+			},
+			series: [{
+				data: [4699, 4499, 4599, 4299],
+				type: 'line'
+			}]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</html>
