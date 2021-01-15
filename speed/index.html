@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>反 应 力 测 试</title>
+	<style>
+		body{
+			padding:0;
+			margin:0;
+		}
+		#block{
+			text-align:center;
+			width:100%;
+			height:100vh;
+			background:#FF1700;
+		}
+		#start{
+			width:45px;
+			height:25px;
+		}
+		#stop{
+			width:45px;
+			height:25px;
+		}
+		#ccolor{
+			height:25px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="block">
+		<h1>反应力测试</h1>
+		<h3>规则：先按“开始”键启动，然后等背景色转变，只要它一变，立即点“结束”键。</h3>
+		<input type="button" id="start" value="开始" onClick="start()">
+		<input type="button" id="stop" value="结束" onClick="push()">
+		<select id="ccolor">
+				<option >请选择变化颜色</option>
+				<option value = "yellow">黄</option>
+                <option value = "blue">蓝</option>
+				<option value = "black">黑</option>
+				<option value = "green">绿</option>
+				<option value = "purple">紫</option>
+			</select>
+	</div>
+</body>
+	<script>
+		var randomsec = 0;
+		var pushsec = 0;
+		var state = 0;
+		var secpush = 0;
+		
+		function start(){
+			state = 0;
+			secpush = 0;
+			randomsec = Math.floor(Math.random()*10);
+			var t1 = setInterval(function(){
+				randomsec--;
+				if (randomsec == 0){
+					var color = document.getElementById("block");
+					var choosecolor = ccolor.options[ccolor.selectedIndex].value;
+					block.style.background=choosecolor;
+					clearInterval(t1);
+				}
+			},1000);
+			
+			var t2 = setInterval(function(){
+				secpush=secpush+0.001;
+				if (state == 1){
+					clearInterval(t2);
+					alert(secpush-randomsec);
+				}
+			},1);
+		}
+		
+		function push(){
+			state = 1;
+		}
+		
+	</script>
+</html>
