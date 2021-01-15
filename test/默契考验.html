@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>默契考验</title>
+	<style>
+		#begin{
+	background: #E6DBF3;
+	width: 350px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	padding-top: 50px;
+	border-radius: 10px;
+		}
+		#bt{
+			height: 80px;
+			font-family: "黑体-简";
+			font-size: 60px;
+			line-height: 85px;
+			margin-bottom: 50px;
+			text-align: center;
+		}
+		#bz{
+			font-family: "黑体-简";
+			text-align: center;
+			margin-top: 30px;
+		}
+		#q{
+			font-family: "黑体-简";
+			text-align: center;
+		}
+		#enter{
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			background: #C5D6F1;
+			border-radius: 20px;
+		}
+		#end{
+			margin-left: 450px;
+			width: 350px;
+			font-family: "黑体-简";
+		}
+		#answer{
+			font-family: "黑体-简";
+			text-align: center;			
+			margin-top: 30px;	
+		}
+	</style>
+</head>
+
+<body>
+	<div id="begin">
+		<div id="bt">默契考验</div>
+		<div id="bz">你了解我吗？</div>
+	</div>
+	<div id="q">
+	  <p>1.颜色
+	  </p>
+		<p>
+			<input type="radio" name="Q1" value="1">黑色<br>
+			<input type="radio" name="Q1" value="2">淡紫色<br>
+			<input type="radio" name="Q1" value="3">白色<br>
+			<input type="radio" name="Q1" value="3">绿色<br>
+		</p>
+	  <p>2.性格
+	  </p>
+		<p>
+			<input type="radio" name="Q2" value="1">冷如冰<br>
+			<input type="radio" name="Q2" value="2">像块糖<br>
+			<input type="radio" name="Q2" value="3">一点就着<br>
+			<input type="radio" name="Q2" value="4">随意吧<br>
+		</p>
+	  <p>3.食物
+	  </p>
+		<p>
+			<input type="radio" name="Q3" value="1">冰淇淋<br>
+			<input type="radio" name="Q3" value="2">能吃就行<br>
+			<input type="radio" name="Q3" value="3">水<br>
+			<input type="radio" name="Q3" value="4">空气<br>
+		</p>
+	  <p>4.（送分题）生日
+	  </p>
+		<p>
+			<input type="radio" name="Q4" value="1">090426<br>
+			<input type="radio" name="Q4" value="2">090722<br>
+			<input type="radio" name="Q4" value="3">090130<br>
+			<input type="radio" name="Q4" value="4">090331<br>
+		</p>
+	  <p>5.一周中唯一的答疑在
+	  </p>
+		<p>
+			<input type="radio" name="Q5" value="1">周一<br>
+			<input type="radio" name="Q5" value="2">周二<br>
+			<input type="radio" name="Q5" value="3">周三<br>
+			<input type="radio" name="Q5" value="4">周四<br>
+		</p>
+	</div>
+	<div id="end"></div>
+	<button id="enter" onClick="main()">提交</button>
+	
+	<div id="answer">
+		你答对了<span id="right_number"></span>题，<br>
+		<span id="right_question"></span>正确啦，<br>
+		<span id="error_question"></span>错了啊……
+	</div>
+</body>
+	<script>
+		function checkAns(name){
+			var temp = document.getElementsByName(name);
+			var answer = 0;
+			for(var i=0;i<temp.length;i++){
+				if(temp[i].checked) answer = temp[i].value;
+			}
+			return answer;
+		}
+		function main(){
+			var questionArray = new Array("Q1","Q2","Q3","Q4","Q5");
+			var resultArray = new Array();
+			var rightArray = new Array();
+			var aryAns = new Array(2,3,1,4,2);
+			var yes = 0
+			var box = document.getElementById("end");
+			for(var i=0;i < questionArray.length;i++){
+				if(checkAns(questionArray[i])!=0) {
+					resultArray[i] = checkAns(questionArray[i]);
+				}else{
+					alert("第"+(i+1)+"题，您未作答");
+					return false;
+				}
+				
+			}
+			var right_number = 0;
+			for (var i = 0;i < questionArray.length;i++) {
+				if(aryAns[i]==resultArray[i]){
+					right_number++;
+					rightArray[i] = 1;
+			}else{
+				rightArray[i] = 0;
+			}
+			}
+			var right_question = "";
+			var error_question = "";
+			for (var i = 0;i < rightArray.length;i++){
+				if (rightArray[i] == 1){
+					right_question += i+1+",";
+				}else{
+					error_question += i+1+",";
+				}
+			}
+			document.getElementById("right_number").innerHTML = right_number;
+			document.getElementById("right_question").innerHTML = right_question;
+			document.getElementById("error_question").innerHTML = error_question;
+			
+		}
+	</script>
+</html>
