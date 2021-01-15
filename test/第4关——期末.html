@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>第四关</title>
+<style>
+	#hat{
+	background: #00FFEB;
+	border-radius: 40px;
+	font-family: "华文新魏";
+	width: 1000px;
+	margin: 100px;
+	}
+	#hut{
+		margin-left: 10px;
+		margin-top: 20px;
+		text-align: center;
+		font-family: "华文新魏";
+		border-radius: 10px;
+	}
+	#zzy{
+		background: #fff;
+	}
+</style>
+</head>
+<body style="padding: 100px"><div id="hat">
+	<!-- 标题部分 -->
+	<h1 style="color: blue; text-align: center">第四关</h1>
+	<h1 style="text-align: center">来了就别想出去了</h1>
+	<br>
+	<hr>
+	<!-- 第一道题 -->
+	<p>1.金龙鱼的比例广告是？<br></p>
+	<p>
+	  <input type="radio" name="M1" value="1">A.1<br>
+	  <input type="radio" name="M1" value="2">B.1:1<br>
+	  <input type="radio" name="M1" value="3">C.兀<br>
+	  <input type="radio" name="M1" value="4">D.1:1:1<br><!-- 正确 -->
+	</p>
+	<p>2.圆周长公式里有正比例关系的定值是<br> </p>
+	<p>
+	  <input type="radio" name="M2" value="1">A.兀<br>
+	  <input type="radio" name="M2" value="2">B.兀r方<br><!-- 正确 -->
+	  <input type="radio" name="M2" value="3">C. 兀<br>
+	  <input type="radio" name="M2" value="4">D.兀 <br>
+	</p>
+	
+  <button id="hut" onClick="main()">交卷</button>
+	<h3>两道题中答对了<span style="color: green" id="right_number"></span>题
+	    <br>
+		正确的题目有<span style="color: orange" id="right_question"></span>
+	    <br>
+		错误的题目有<span style="color: blue" id="error_question"></span>
+	</h3>
+	
+	<button onClick="john()">单机进入第五关</button>
+	</div>
+</body>
+<script>
+//获得用户答题结果，并判断是否答题
+function checkAns(name){
+	var temp = document.getElementsByName(name); //返回带有指定名称的对象集合
+	var anwser = 0;
+	for(var i=0;i<temp.length;i++){
+		if(temp[i].checked) anwser = temp[i].value; //获取被选中的选项
+	}
+	return anwser;
+}
+	var right_number= 0;//计算答对的题数；
+	function main(){
+	var questionArray = new Array("M1","M2");
+	var resultArray = new Array(); //存放答题结果
+	var rightArray = new Array(); //将答题结果转换为1,0表示
+	var aryAns = new Array(4,2);  //建立储存正确答案的数组
+	//判断题目是否已作答
+	for (var i = 0; i < questionArray.length; i++) {
+		if (checkAns(questionArray[i])!=0){
+			resultArray[i] = checkAns(questionArray[i]);
+		}else{
+			alert("第"+(i+1)+"题,您未作答！");
+			return false;
+		}
+	}
+	//判断题目是否答对
+	
+	for (var i = 0; i < questionArray.length; i++){
+		if (aryAns[i]==resultArray[i]){
+			right_number++;
+			rightArray[i] = 1;
+		}else{
+			rightArray[i] = 0;
+		}
+	}
+	//将答对和答错的题目分类
+	var right_question = ""; //存放答对的题目序号
+	var error_question = ""; //存放错误的题目序号
+	for (var i = 0; i < rightArray.length;i++){
+		if (rightArray[i] ==1){
+			right_question += i+1+",";
+		}else{
+			error_question += i+1+",";
+		}
+	}
+	document.getElementById("right_number").innerHTML = right_number;
+	document.getElementById("right_question").innerHTML = right_question;
+	document.getElementById("error_question").innerHTML = error_question;
+}
+	function john(){
+	if(right_number >= 4){
+		window.location.href="第5关——期末.html";
+	}
+}
+</script>
+</html>
