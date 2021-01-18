@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+    <style>
+		body{
+			background: #CEAFD2;
+		}
+		h1{
+			font-family: "站酷快乐体2016修订版";
+		}
+		p{
+			font-family: "站酷快乐体2016修订版";
+		}
+		h3{
+			font-family: "站酷快乐体2016修订版";
+			margin: 5px 200px;
+		}
+		#box{
+			width: 550px;
+			margin: auto;
+			background: #FFFFFF;
+			padding: 50px 80px;
+			border-radius: 50px;
+		}
+		#btn{
+			width: 200px;
+			height: 40px;
+			margin: 5px 200px;
+			border-style: none;
+			background: #9DD9FF;
+			border-radius: 10px;
+			font-family: "站酷快乐体2016修订版";
+			font-size: 20px;
+			outline: none;
+		}
+		h4{
+			font-family: "站酷快乐体2016修订版";
+			padding: 0px 220px;
+		}
+	</style>
+
+</head>
+
+<body>
+<div id="box">
+	<h1 style="text-align: center">小测试</h1>
+	<hr>
+	<h4 style="color: indianred">你了解我吗？</h4>
+	<p>Q1:我喜欢奶茶or咖啡or可乐？</p>
+	<p>
+	<input type="radio" name="Q1" value="1">A.奶茶<br>
+	<input type="radio" name="Q1" value="2">B.咖啡<br>
+	<input type="radio" name="Q1" value="3">C.可乐</p>
+	<p>Q2:我喜欢QQ音乐or网易云or哔哩哔哩？</p>
+	<p>
+	<input type="radio" name="Q2" value="1">A.QQ音乐<br>
+	<input type="radio" name="Q2" value="2">B.网易云<br>
+	<input type="radio" name="Q2" value="3">C.哔哩哔哩</p>
+	<p>Q3:我最喜欢的一门学科是？</p>
+	<p>
+	<input type="radio" name="Q3" value="1">A.语文<br>
+	<input type="radio" name="Q3" value="2">B.数学<br>
+	<input type="radio" name="Q3" value="3">C.英语</p>
+	<p>Q4:我最喜欢的特长是？</p>
+	<p>
+	<input type="radio" name="Q4" value="1">A.跳舞<br>
+	<input type="radio" name="Q4" value="2">B.唱歌<br>
+    <input type="radio" name="Q1" value="3">C.编程</p>
+	<p>Q5:你觉得你这些答案你填得都对吗？</p>
+	<p>
+	<input type="radio" name="Q5" value="1">A.肯定没问题<br>
+	<input type="radio" name="Q5" value="2">B.我不太确定<br>
+    <input type="radio" name="Q5" value="3">C.肯定都错了</p>
+
+	<button id="btn" onClick="main()">填好啦</button>
+
+	<h3>恭喜你一共答对了<span style="color: indianred" id="rightnumber"></span>题,<br>
+	    正确的题目有：<span style="color: indianred" id="rightquestion"></span><br>
+		错误的题目有：<span style="color: indianred" id="errorquestion"></span>	
+	</h3>
+</div>
+</body>
+<script>
+function checkAns(name){
+	var temp = document.getElementsByName(name);
+	var answer = 0;
+	for(var i = 0; i < temp.length; i++){
+		if(temp[i].checked) answer = temp[i].value;
+	}
+	return answer;
+}
+function main(){
+	var questionArray = new Array("Q1","Q2","Q3","Q4","Q5");
+	var resultArray = new Array();//存放答题结果
+	var rightArray = new Array();//将答题结果转化成0,1表示
+	var aryAns = new Array(2,1,2,1,1);//建立储存正确答案的数组
+	
+	for(var i=0; i < questionArray.length; i++){
+		if(checkAns(questionArray[i])!=0){
+			resultArray[i] = checkAns(questionArray[i]);
+		}else{
+			alert("第"+(i+1)+"题，您未作答!");
+			return false;
+		}
+	}
+	var rightnumber = 0;
+	for(var i = 0; i < questionArray.length; i++){
+		if(aryAns[i]==resultArray[i]){
+			rightnumber++;
+			rightArray[i] = 1;
+		}else{
+			rightArray[i] = 0;
+		}
+	}
+	var rightquestion = "";
+	var errorquestion = "";
+	for(var i = 0; i < rightArray.length; i++){
+		if(rightArray[i]==1){
+			rightquestion += i+1+",";
+		}else{
+			errorquestion += i+1+",";
+		}
+	}
+	document.getElementById("rightnumber").innerHTML = rightnumber;
+	document.getElementById("rightquestion").innerHTML = rightquestion;
+	document.getElementById("errorquestion").innerHTML = errorquestion;
+}	
+</script>
+</html>
