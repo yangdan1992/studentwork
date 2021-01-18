@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>dadsfsfadfd</title>
+<style>
+	.box{
+		width:1218px;
+		height: 377px;
+		line-height: 357px;
+		background-color: rgba(21,219,197,0.4);
+		margin-left:auto;
+		margin-right:auto;
+		border-radius:70px;
+		text-align: center;
+		font-size: 87px;
+	}
+	.redb{
+		width:174px;
+		height:377px;
+		float:left;
+		background-color: rgba(255,0,0,0.47);
+		border-bottom-left-radius: 70px;
+		border-top-left-radius: 70px;
+	}
+	.orab{
+		width:174px;
+		height:377px;
+		float:left;
+		background-color: rgba(255,128,0,0.80);
+	}
+	.yllb{
+		width:174px;
+		height:377px;
+		float:left;
+		background-color: rgba(255,255,0,0.77);
+	}
+	.greb{
+		width:174px;
+		height:377px;
+		float:left;
+		background-color: rgba(1,255,1,0.47);
+	}
+	.gblb{
+		width:174px;
+		height:377px;
+		float:left;
+		background-color: rgba(0,255,193,0.47);
+	}
+	.blub{
+		width:174px;
+		height:377px;
+		float:left;
+		background-color: rgba(2,2,255,0.43);
+	}
+	.prpb{
+		width:174px;
+		height:377px;
+		float:left;
+		background-color: rgba(192,2,255,0.47);
+		border-bottom-right-radius: 70px;
+		border-top-right-radius: 70px;
+	}
+	.little{
+		width: 100px;height:33px;border-radius:10px;
+		margin-left: 600px;
+		margin-top:20px;
+		
+	}
+	.answer{
+		width:400px;
+		height:33px;
+		border-radius=10px;
+		text-align: center;
+		margin-left: 450px;margin-top:20px;
+	}
+	.okay{
+		width: 100px;height:33px;border-radius:10px;
+		margin-left: 600px;
+		margin-top:20px;
+	}
+</style>
+</head>
+<body>
+<div class="box">
+	<div class="redb"></div>
+		<div class="orab"></div>
+		<div class="yllb"></div>
+		<div class="greb"></div>
+		<div class="gblb"></div>
+		<div class="blub"></div>
+		<div class="prpb"></div>
+	</div>
+<input type="button" value="Start" class="little" onClick="scanf()"><br>
+
+	<input type="text" class="answer" placeholder="ADD THE NUMBER AND PUT IT IN THIS BOX"><br>
+
+<input type="button" value="OK" class="okay" onclick="printf()">
+</body>
+<script>
+	var redbox=document.getElementsByClassName("redb")[0];
+	var orangebox=document.getElementsByClassName("orab")[0];
+	var yellowbox=document.getElementsByClassName("yllb")[0];
+	var greenbox=document.getElementsByClassName("greb")[0];
+	var greenbluebox=document.getElementsByClassName("gblb")[0];
+	var bluebox=document.getElementsByClassName("blub")[0];
+	var purplebox=document.getElementsByClassName("prpb")[0];
+	var cnt=0;
+    function scanf(){
+		redbox.innerHTML=Math.floor(Math.random()*50);
+		orangebox.innerHTML=Math.floor(Math.random()*50);
+		yellowbox.innerHTML=Math.floor(Math.random()*50);
+		greenbox.innerHTML=Math.floor(Math.random()*50);
+		bluebox.innerHTML=Math.floor(Math.random()*50);
+		greenbluebox.innerHTML=Math.floor(Math.random()*50);	
+		purplebox.innerHTML=Math.floor(Math.random()*50);		cnt=eval(redbox.innerHTML)+eval(orangebox.innerHTML)+eval(yellowbox.innerHTML)+eval(greenbox.innerHTML)+eval(bluebox.innerHTML)+eval(greenbluebox.innerHTML)+eval(purplebox.innerHTML);
+	}	
+	function printf(){
+		var daan=document.getElementsByClassName("answer")[0];
+		if(daan.value==cnt){
+			alert("通过");
+			daan.value="";
+		}
+		else{
+			alert("不通过");
+			daan.value="";
+		}
+		scanf();
+	}
+	</script>
+</html>
