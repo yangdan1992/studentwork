@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>青岛中学食堂菜品投票云图</title>
+<link rel="stylesheet" type="text/css" href="jqcloud/jqcloud.css" />
+<script type="text/javascript" src="jqcloud/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="jqcloud/jqcloud-1.0.4.js"></script>
+<style>
+	.box{
+		width:1200px;
+		height:730px;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 70px;
+		font-size: 70px;
+		font-family: '华文行楷';
+		text-align: center;
+	}
+	.box1{
+		width:600px;
+		height:220px;
+		border-radius: 30px;
+		background-color: #ff7777;
+	}
+	.box11{
+		width:600px;
+		height:65px;
+		border-radius: 30px;
+		background-color: #FFBB6D;
+	}
+	.box2{
+		width:600px;
+		height:951px;
+		background-color: rgba(100,140,255,0.40);
+		border-radius: 40px;
+		border-bottom-right-radius: 70px;
+		margin-left: 670px;
+	}
+	.btn{
+		width:25px;
+		height:25px;
+		border-radius:50%;
+		background-color: rgba(51,144,243,1.00);
+		font-size: 5px;
+		float:right;
+		margin-top: 5px;
+		
+	}
+	.btn1{
+		width:25px;
+		height:25px;
+		border-radius:50%;
+		background-color: rgba(255,32,32,1.00);
+		font-size: 5px;
+		float:right;
+		margin-top: 5px;
+	}
+	.box3{
+		width:150px;
+		height:43px;
+		background-color: #ff4444;
+		border-radius:30px;
+		float:left;
+		margin-top: 10px;
+		font-size: 15px;
+		line-height: 43px;
+	}
+	.option{
+		width: 600px;
+		float:left;
+		height:951px;
+		background-color: rgba(248,175,176,1.00);border-radius: 30px;
+	}
+	.box12{
+		width:600px;
+		height:120px;
+		border-radius: 30px;
+		background-color: #E8E833;
+	}
+	.box13{
+		width:600px;
+		height:65px;
+		border-radius: 30px;
+		background-color: #aaeeaa;
+	}.box14{
+		width:600px;
+		height:65px;
+		border-radius: 30px;
+		background-color: #04A054;
+	}
+	.box21{
+		width:600px;
+		height:120px;
+		border-radius: 30px;
+		background-color: #55efc1;
+	}
+	.box22{
+		width:600px;
+		height:220px;
+		border-radius: 30px;
+		background-color: #7786ff;
+	}
+	.box23{
+		width:600px;
+		height:65px;
+		border-radius: 30px;
+		background-color: #cc66ff;
+	}
+	.box23 .box3{
+		background-color: #8510F9;
+	}
+	.boxfinal{
+		height: auto;
+		width: auto;
+		border-radius: 30px;
+		background-color:rgba(144,239,255,1.00);
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		font-size:25px;
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		<div class="title">青岛中学食堂菜品投票云图</div>
+		<div class="boxfinal">红色圆圈是差评，蓝色圆圈是好评，所有评论会影响右侧的云图,不可以多次投票。谢谢大家的参与！<br>可以下滑！</div>
+		<div class="option">
+		<div class="box1">
+			<div class="box3">劲脆鸡腿堡<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">香辣鸡腿堡<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">田园堡<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">猪排堡<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">牛排堡<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">薯条<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">奥尔良鸡翅<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">蛋挞<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">西餐烤肉串<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">香肠<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">派<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">玉米棒<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">鸡块<input type="button" class="btn"><input type="button" class="btn1"></div>
+		</div>
+
+			<div class="box11">
+				<div class="box3" style="background-color: #ff9944">韩式拌饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			</div>
+			<div class="box12">
+				<div class="box3" style="background-color: #ffff44">意大利面<input type="button" class="btn"><input type="button" class="btn1"></div>
+				<div class="box3" style="background-color: #ffff44">咖喱饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #ffff44">牛排饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #ffff44">牛排面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #ffff44">牛排<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #ffff44">豚骨拉面<input type="button" class="btn"><input type="button" class="btn1"></div>
+		    </div>
+			<div class="box13">
+			<div class="box3" style="background-color: #44ff44">牛肉面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #44ff44">牛肉粉<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3"  style="background-color: #44ff44">煎饼果子<input type="button" class="btn"><input type="button" class="btn1"></div>
+			</div>
+			<div class="box14"><div class="box3" style="background-color: #56cd56">自助餐<input type="button" class="btn"><input type="button" class="btn1"></div></div>
+			<div class="box21"><div class="box3" style="background-color: #0C9A80">自助火锅<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #0C9A80">自助炒饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #0C9A80">82号营养餐<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #0C9A80">麻辣烫<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #0C9A80">东区拌饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #0C9A80">东区牛排饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #0C9A80">鸡排饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #0C9A80">猪排饭<input type="button" class="btn"><input type="button" class="btn1"></div></div>
+			
+			<div class="box22"><div class="box3" style="background-color: #3366ff">牛肉拉面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">牛肉米线<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">牛肉刀削面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">馄饨<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">酸菜拉面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">肉夹馍<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">葱油拌面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">葱爆牛肉盖面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">孜然牛肉拌面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">孜然鸡块盖面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">大盘鸡盖面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">红烧牛肉面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3" style="background-color: #3366ff">红烧刀削面<input type="button" class="btn"><input type="button" class="btn1"></div>
+			</div>
+			<div class="box23">
+			<div class="box3">东区咖喱饭<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">味增汤<input type="button" class="btn"><input type="button" class="btn1"></div>
+			<div class="box3">东区鸡排<input type="button" class="btn"><input type="button" class="btn1"></div>
+			</div>
+		</div>
+		<div class="box2"></div>
+	
+	</div>
+<script type="text/javascript">
+	var btn = document.getElementsByClassName("btn");
+	var bon = document.getElementsByClassName("btn1");
+	var array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+	var word_list = [
+	{text: "劲脆鸡腿堡("+array[0]+")", weight: array[0]},
+	{text: "香辣鸡腿堡("+array[1]+")", weight: array[1]},
+	{text: "田园堡("+array[2]+")", weight: array[2]},
+	{text: "猪排堡("+array[3]+")", weight: array[3]},
+	{text: "牛排堡("+array[4]+")", weight: array[4]},
+	{text: "薯条("+array[5]+")", weight: array[5]},
+	{text: "奥尔良鸡翅("+array[6]+")", weight: array[6]},
+    {text: "蛋挞("+array[7]+")", weight: array[7]},
+    {text: "西餐烤肉串("+array[8]+")", weight: array[8]},
+    {text: "香肠("+array[9]+")", weight: array[9]},
+    {text: "派("+array[10]+")", weight: array[10]},
+    {text: "玉米棒("+array[11]+")", weight: array[11]},
+    {text: "鸡块("+array[12]+")", weight: array[12]},
+    {text: "韩式拌饭("+array[13]+")", weight: array[13]},
+    {text: "意大利面("+array[14]+")", weight: array[14]},
+    {text: "咖喱饭("+array[15]+")", weight: array[15]},
+    {text: "牛排饭("+array[16]+")", weight: array[16]},
+    {text: "牛排面("+array[17]+")", weight: array[17]},
+    {text: "牛排("+array[18]+")", weight: array[18]},
+    {text: "豚骨拉面("+array[19]+")", weight: array[19]},
+    {text: "牛肉面("+array[20]+")", weight: array[20]},
+    {text: "牛肉粉("+array[21]+")", weight: array[21]},
+    {text: "煎饼果子("+array[22]+")", weight: array[22]},
+    {text: "自助餐("+array[23]+")", weight: array[23]},
+    {text: "自助火锅("+array[24]+")", weight: array[24]},
+    {text: "自助炒饭("+array[25]+")", weight: array[25]},
+    {text: "82号营养餐("+array[26]+")", weight: array[26]},
+    {text: "麻辣烫("+array[27]+")", weight: array[27]},
+    {text: "东区拌饭("+array[28]+")", weight: array[28]},
+    {text: "东区牛排饭("+array[29]+")", weight: array[29]},
+    {text: "鸡排饭("+array[30]+")", weight: array[30]},
+    {text: "猪排饭("+array[31]+")", weight: array[31]},
+    {text: "牛肉拉面("+array[32]+")", weight: array[32]},
+    {text: "牛肉米线("+array[33]+")", weight: array[33]},
+    {text: "牛肉刀削面("+array[34]+")", weight: array[34]},
+    {text: "馄饨("+array[35]+")", weight: array[35]},
+    {text: "酸菜拉面("+array[36]+")", weight: array[36]},
+	{text: "肉夹馍("+array[37]+")", weight: array[37]},
+    {text: "葱油拌面("+array[38]+")", weight: array[38]},
+    {text: "葱爆牛肉盖面("+array[39]+")", weight: array[39]},
+    {text: "孜然牛肉拌面("+array[40]+")", weight: array[40]},
+    {text: "孜然鸡块盖面("+array[41]+")", weight: array[41]},
+    {text: "大盘鸡盖面("+array[42]+")", weight: array[42]},
+    {text: "红烧牛肉面("+array[43]+")", weight: array[43]},
+    {text: "红烧刀削面("+array[44]+")", weight: array[44]},
+    {text: "东区咖喱饭("+array[45]+")", weight: array[45]},
+    {text: "味增汤("+array[46]+")", weight: array[46]},
+    {text: "东区鸡排("+array[47]+")", weight: array[47]},
+	];
+	$(function() {
+    	$(".box2").jQCloud(word_list);
+    });
+	for(var i = 0;i < 48;i++){
+		btn[i].index = i;
+		bon[i].index = i;
+		btn[i].onclick = function(){
+			array[this.index]++;
+			$(".box2").empty();
+			var word_list = [
+			{text: "劲脆鸡腿堡("+array[0]+")", weight: array[0]},
+			{text: "香辣鸡腿堡("+array[1]+")", weight: array[1]},
+			{text: "田园堡("+array[2]+")", weight: array[2]},
+			{text: "猪排堡("+array[3]+")", weight: array[3]},
+			{text: "牛排堡("+array[4]+")", weight: array[4]},
+			{text: "薯条("+array[5]+")", weight: array[5]},
+			{text: "奥尔良鸡翅("+array[6]+")", weight: array[6]},
+        	{text: "蛋挞("+array[7]+")", weight: array[7]},
+        	{text: "西餐烤肉串("+array[8]+")", weight: array[8]},
+        	{text: "香肠("+array[9]+")", weight: array[9]},
+        	{text: "派("+array[10]+")", weight: array[10]},
+        	{text: "玉米棒("+array[11]+")", weight: array[11]},
+        	{text: "鸡块("+array[12]+")", weight: array[12]},
+        	{text: "韩式拌饭("+array[13]+")", weight: array[13]},
+        	{text: "意大利面("+array[14]+")", weight: array[14]},
+        	{text: "咖喱饭("+array[15]+")", weight: array[15]},
+        	{text: "牛排饭("+array[16]+")", weight: array[16]},
+        	{text: "牛排面("+array[17]+")", weight: array[17]},
+        	{text: "牛排("+array[18]+")", weight: array[18]},
+        	{text: "豚骨拉面("+array[19]+")", weight: array[19]},
+        	{text: "牛肉面("+array[20]+")", weight: array[20]},
+        	{text: "牛肉粉("+array[21]+")", weight: array[21]},
+        	{text: "煎饼果子("+array[22]+")", weight: array[22]},
+        	{text: "自助餐("+array[23]+")", weight: array[23]},
+        	{text: "自助火锅("+array[24]+")", weight: array[24]},
+        	{text: "自助炒饭("+array[25]+")", weight: array[25]},
+        	{text: "82号营养餐("+array[26]+")", weight: array[26]},
+        	{text: "麻辣烫("+array[27]+")", weight: array[27]},
+        	{text: "东区拌饭("+array[28]+")", weight: array[28]},
+        	{text: "东区牛排饭("+array[29]+")", weight: array[29]},
+        	{text: "鸡排饭("+array[30]+")", weight: array[30]},
+        	{text: "猪排饭("+array[31]+")", weight: array[31]},
+        	{text: "牛肉拉面("+array[32]+")", weight: array[32]},
+        	{text: "牛肉米线("+array[33]+")", weight: array[33]},
+        	{text: "牛肉刀削面("+array[34]+")", weight: array[34]},
+        	{text: "馄饨("+array[35]+")", weight: array[35]},
+        	{text: "酸菜拉面("+array[36]+")", weight: array[36]},
+        	{text: "肉夹馍("+array[37]+")", weight: array[37]},
+        	{text: "葱油拌面("+array[38]+")", weight: array[38]},
+        	{text: "葱爆牛肉盖面("+array[39]+")", weight: array[39]},
+        	{text: "孜然牛肉拌面("+array[40]+")", weight: array[40]},
+        	{text: "孜然鸡块盖面("+array[41]+")", weight: array[41]},
+        	{text: "大盘鸡盖面("+array[42]+")", weight: array[42]},
+        	{text: "红烧牛肉面("+array[43]+")", weight: array[43]},
+        	{text: "红烧刀削面("+array[44]+")", weight: array[44]},
+        	{text: "东区咖喱饭("+array[45]+")", weight: array[45]},
+        	{text: "味增汤("+array[46]+")", weight: array[46]},
+        	{text: "东区鸡排("+array[47]+")", weight: array[47]},
+			];
+			$(function() {
+    			$(".box2").jQCloud(word_list);
+    		});
+		}
+		bon[i].onclick = function(){
+			array[this.index]--;
+			$(".box2").empty();
+			var word_list = [
+			{text: "劲脆鸡腿堡("+array[0]+")", weight: array[0]},
+			{text: "香辣鸡腿堡("+array[1]+")", weight: array[1]},
+			{text: "田园堡("+array[2]+")", weight: array[2]},
+			{text: "猪排堡("+array[3]+")", weight: array[3]},
+			{text: "牛排堡("+array[4]+")", weight: array[4]},
+			{text: "薯条("+array[5]+")", weight: array[5]},
+			{text: "奥尔良鸡翅("+array[6]+")", weight: array[6]},
+        	{text: "蛋挞("+array[7]+")", weight: array[7]},
+        	{text: "西餐烤肉串("+array[8]+")", weight: array[8]},
+        	{text: "香肠("+array[9]+")", weight: array[9]},
+        	{text: "派("+array[10]+")", weight: array[10]},
+        	{text: "玉米棒("+array[11]+")", weight: array[11]},
+        	{text: "鸡块("+array[12]+")", weight: array[12]},
+        	{text: "韩式拌饭("+array[13]+")", weight: array[13]},
+        	{text: "意大利面("+array[14]+")", weight: array[14]},
+        	{text: "咖喱饭("+array[15]+")", weight: array[15]},
+        	{text: "牛排饭("+array[16]+")", weight: array[16]},
+        	{text: "牛排面("+array[17]+")", weight: array[17]},
+        	{text: "牛排("+array[18]+")", weight: array[18]},
+        	{text: "豚骨拉面("+array[19]+")", weight: array[19]},
+        	{text: "牛肉面("+array[20]+")", weight: array[20]},
+        	{text: "牛肉粉("+array[21]+")", weight: array[21]},
+        	{text: "煎饼果子("+array[22]+")", weight: array[22]},
+        	{text: "自助餐("+array[23]+")", weight: array[23]},
+        	{text: "自助火锅("+array[24]+")", weight: array[24]},
+        	{text: "自助炒饭("+array[25]+")", weight: array[25]},
+        	{text: "82号营养餐("+array[26]+")", weight: array[26]},
+        	{text: "麻辣烫("+array[27]+")", weight: array[27]},
+        	{text: "东区拌饭("+array[28]+")", weight: array[28]},
+        	{text: "东区牛排饭("+array[29]+")", weight: array[29]},
+        	{text: "鸡排饭("+array[30]+")", weight: array[30]},
+        	{text: "猪排饭("+array[31]+")", weight: array[31]},
+        	{text: "牛肉拉面("+array[32]+")", weight: array[32]},
+        	{text: "牛肉米线("+array[33]+")", weight: array[33]},
+        	{text: "牛肉刀削面("+array[34]+")", weight: array[34]},
+        	{text: "馄饨("+array[35]+")", weight: array[35]},
+        	{text: "酸菜拉面("+array[36]+")", weight: array[36]},
+        	{text: "肉夹馍("+array[37]+")", weight: array[37]},
+        	{text: "葱油拌面("+array[38]+")", weight: array[38]},
+        	{text: "葱爆牛肉盖面("+array[39]+")", weight: array[39]},
+        	{text: "孜然牛肉拌面("+array[40]+")", weight: array[40]},
+        	{text: "孜然鸡块盖面("+array[41]+")", weight: array[41]},
+        	{text: "大盘鸡盖面("+array[42]+")", weight: array[42]},
+        	{text: "红烧牛肉面("+array[43]+")", weight: array[43]},
+        	{text: "红烧刀削面("+array[44]+")", weight: array[44]},
+        	{text: "东区咖喱饭("+array[45]+")", weight: array[45]},
+        	{text: "味增汤("+array[46]+")", weight: array[46]},
+        	{text: "东区鸡排("+array[47]+")", weight: array[47]},
+			];
+			$(function() {
+    			$(".box2").jQCloud(word_list);
+    		});
+		}
+	}
+	
+	</script>
+</body>
+</html>
