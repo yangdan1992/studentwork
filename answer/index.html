@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{
+			background:#434343;
+		}
+		#bodybox{
+		background:#E9C5E1;
+		width: 500px;
+	    height: 250px;
+		border-radius: 10px;
+		border: solid #F8DBFF 5px;
+		font-size: 48px;
+		text-align: center;
+		line-height: 240px;
+		margin: 50px auto;
+		color: aliceblue;
+		}
+		#start{
+		background:#C4D7EC;
+		width:450px;
+		height: 40px;
+		border-radius: 10px;
+		border: none;
+		font-size: 20px;
+		color: aliceblue;
+		display: block;
+		margin: auto;
+		}
+	</style>	
+</head>
+
+<body>
+	<div id="bodybox">答案之书</div>
+	<button id="start" onClick="begin()">翻开</button>
+</body>
+	<script>
+	var ll=["如你所愿","一定会的","慎重考虑","聆听心声","不会的","放手去做","找到你自己的答案","询问值得你信任的人","美梦成真","几个菜啊醉成这样","是的","可能会很久","不久的将来","只要你勇敢去做","你值得"];
+	var start=document.getElementById("start");
+	var bodybox=document.getElementById("bodybox");
+	var t;
+	function begin(){
+		if(start.innerHTML=="翻开"){
+			start.innerHTML="聆听";
+			t=setInterval(function(){
+				var sj=Math.floor(Math.random()*ll.length);
+			bodybox.innerHTML=ll[sj]
+			},5);
+	    }else if(start.innerHTML=="聆听"){
+		    start.innerHTML="这就是你的答案";
+		    clearInterval(t);
+	   }else{
+			   start.innerHTML="翻开";
+	   }
+			   
+			   
+		   
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>
