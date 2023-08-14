@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Main</title>
+<link href="CssTypes.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<script type="text/javascript" src="js/ripplet.js"></script>
+	<script type="text/javascript" src="Gnr.js"></script><br>
+	<h1 id='h'>营销号文案生成器</h1>
+	<div id="box">
+		<div class="inpt">
+			<input id="Mnt" placeholder="主体">
+		</div>
+		<div class="inpt">
+			<input id="Evt" placeholder="事件">
+		</div>
+		<div class="inpt">
+			<input id="Ats" placeholder="另一种说法">
+		</div>
+		<div class="submit">
+			<button id="subm" onmousedown="ripplet(event, { color: null, className: 'rainbow' })" onClick="Generate()">生成生草文案！</button>
+		</div>
+	</div>
+	<div id="b1x">
+		<br/>
+		<br/>
+		<div id="bx"></div>
+	</div>
+	<script>
+		var mnt = document.getElementById("Mnt");
+		var evt = document.getElementById("Evt");
+		var ats = document.getElementById("Ats");
+		var res = document.getElementById("bx");
+		function Generate(){
+			if(mnt.value==""){
+				alert("错误#0001：未输入主体");
+				return 1;
+			}else if(evt.value==""){
+				alert("错误#0002：未输入事件");
+				return 1;
+			}else if(ats.value==""){
+				alert("错误#0003：未输入另一种说法");
+				return 1;
+			}
+			res.innerHTML="　　"+mnt.value+evt.value+"是怎么回事呢？"+mnt.value+"相信大家都很熟悉，但是"+mnt.value+evt.value+"是怎么回事呢，下面就让小编带大家一起了解吧。"+"\n	"+mnt.value+evt.value+"，其实就是"+ats.value+"，大家可能会很惊讶"+mnt.value+"怎么会"+evt.value+"呢？但事实就是这样，小编也感到非常惊讶。"+"\n	"+"这就是关于"+mnt.value+evt.value+"的事情了，大家有什么想法呢，欢迎在评论区告诉小编一起讨论哦！";
+			return 0;
+		}
+	</script>
+</body>
+</html>
