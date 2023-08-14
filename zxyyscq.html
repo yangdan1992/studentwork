@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>哲学语言生成器</title>
+<style>
+	#box{
+		width: 40%; 
+		height: 200px;
+		background: #E99800;
+		border: solid 5px #D57700;
+		border-radius: 10px;
+		font-size: 40px;
+		font-weight: 600;
+		text-align: center;
+		line-height: 200px;
+		margin: 100px auto 25px auto;
+	}
+	button{
+		display: block;
+		width: 40%;
+		height: 50px;
+		border-radius: 10px;
+		background: #FFF500;
+		font-size: 25px;
+		color: #000000;
+		margin: 25px auto;
+		cursor: pointer;
+	}
+	button:hover{
+		background: #FFED00;
+	}
+	#name{
+		width: 80%;
+		margin: 25px auto;
+	}
+	.name{
+		width: 20%;
+		height: 50px;
+		background-color: #FFED80;
+		border: 1px solid #FFED60;
+		text-align: center;
+		border-radius: 10px;
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 50px;
+		float: left;
+		margin: 1% 2%;
+}
+</style>
+	
+</head>
+
+<body>
+	<div id="box">生成哲学语言</div>
+	<button id="start" onClick="begin()">生成哲学语言</button>
+	<button id="reset" onClick="reset()">清除哲学语言（以防被爸妈发现）</button>
+	<button id="shengliu" onClick="shengliu()">省流</button>
+	<div id="name" class=""></div>
+</body>
+<script>
+	var cy1 = ["我","一群人","某不知名人士","一个人","van","我旁边的人","我微信的置顶好友","我班里的一位同学"];
+	var cy2 = ["自己","和一群人","和我旁边的人","和一只猫","和作者","和班里的一位同学","和一个草方块","和腾讯官方","和一位UP主","和喜欢的人","和FBI","和阿兹卡班的高材生"]
+	var cy3 = ["在野外","在天台","在直升机上","在酒店","在我家","在厕所","在审判长廊","在学校","在外太空","在B站","在绣湖","在霍格沃茨"]
+	var cy4 = ["吃饭","打游戏","打架","游泳","给UP主三连","发射核弹","作死","造核弹","上网课","提取记忆方块","被大黑追杀","跳伞","被二向箔砸中","进行巫师对决","水视频","电摇","*充满决心"]
+	var box = document.getElementById("box");
+	var start = document.getElementById("start");
+	var names = document.getElementById("name")
+	var state = 0;
+	var t;
+	var sj;
+	var tmp = cy1.slice(0);
+	var cs = 1;
+	var sl1;
+	var sl2;
+	var sl3;
+	var sl4;
+	var sl5;
+	
+	function begin(){
+		if (state==0){
+			if (cs != 5){
+				start.innerHTML = "就决定是你了";
+			    state = 1;
+				if(cs == 1) tmp = cy1.slice(0);
+				if(cs == 2) tmp = cy2.slice(0);
+				if(cs == 3) tmp = cy3.slice(0);
+				if(cs == 4) tmp = cy4.slice(0);
+				cs = cs + 1;
+				t = setInterval (function (){
+					sj = Math.floor(Math.random() * tmp.length);
+					box.innerHTML = tmp[sj];
+				}, 3)
+			}else{
+				alert ("哲学语言已生成完毕，可以清除后再生成一句");
+				
+			}
+			
+		}else{
+			start.innerHTML = "生成哲学语言";
+			state = 0;
+			clearInterval(t);
+			var div = document.createElement("div");
+			div.className = "name";
+			div.innerHTML = box.innerHTML;
+			names.appendChild(div);
+			} 
+		}
+	function reset(){
+		cs = 1;
+		box.innerHTML = "生成哲学语言";	
+		names.innerHTML = "";
+		var tmp = cy1.slice(0);
+	}
+	function shengliu(){
+		sj = Math.floor(Math.random() * cy1.length);
+		sl1 = cy1[sj];
+		sj = Math.floor(Math.random() * cy2.length);
+		sl2 = cy2[sj];
+		sj = Math.floor(Math.random() * cy3.length);
+		sl3 = cy3[sj];
+		sj = Math.floor(Math.random() * cy4.length);
+		sl4 = cy4[sj];
+		alert("已为您生成："+sl1+sl2+sl3+sl4);
+	}
+</script>
+</html>
