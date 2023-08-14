@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>游戏说明</title>
+<style>
+	body{
+		background: #000;
+		color: #fff;
+		display: flex;
+		height: 100vh;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
+	.main{
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+		line-height: 50px;
+	}
+	button{
+		font-size: 24px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+</style>
+</head>
+
+<body>
+	<div class="main">
+		这是一个检测你对颜色敏感度的小游戏<br>
+		你需要从下面众多相似的颜色中选中上面格子中的颜色<br>
+		你共有3分钟的挑战时间，每选对一个格子颜色得10分，选错扣2分，只有选中当前格子颜色才能进入下一个格子哟<br>
+		准备好了吗<br>
+		点击按钮开始吧<br>
+		<button onClick="goNext()">进入颜色世界</button>
+	</div>
+	<div style="position: absolute; bottom: 20px; right: 20px;">此游戏版权归柳东洋、孟予灏所有</div>
+</body>
+<script>
+	function goNext(){
+		window.location.href = '色盲派对最终版.html';
+	}
+</script>
+</html>

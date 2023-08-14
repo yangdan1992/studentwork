@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>色盲派对--低血压治疗器（doge）</title>
+	<style>
+		body{
+			background: url(p1.gif);
+			background-size: cover;
+		}
+		#main{
+		width: 1200px;
+		margin: auto;
+	}
+	.grid, .grid_color{
+		width: 40px;
+		height: 40px;
+		float: left;
+	}
+		#color{
+			width: 360px;
+			margin: auto;
+			clear: both;
+			float: none;
+		}
+		.msg{
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			color: #fff;
+			font-weight: bold;
+			font-size: 24px;
+		}
+	</style>
+</head>
+	
+
+<body>
+	<div class="msg">
+		<div>倒计时：<span id="time">180</span></div>
+		<div>得分：<span id="score">0</span></div>
+	</div>
+	<div id="main"></div>
+	<div style="clear: both;float: none"></div>
+	<div id="color"></div>
+</body>
+<script>
+	var time = document.getElementById('time');
+	var score = document.getElementById('score');
+	var t = setInterval(function(){
+		time.innerHTML = time.innerHTML - 1;
+		if(time.innerHTML == 0){
+			clearInterval(t);
+			alert('游戏结束，你的得分为' + score.innerHTML);
+			window.location.href = '游戏说明页.html';
+		}
+	},1000);
+	
+	
+	var abab = Math.floor(Math.random()*10);
+	var cc;
+	switch(abab){
+		case 0: document.body.style.background = "url(p1.gif)";document.body.style.backgroundSize = 'cover';break;
+		case 1: document.body.style.background = "url(p2.gif)";document.body.style.backgroundSize = 'cover';break;
+		case 2: document.body.style.background = "url(p3.gif)";document.body.style.backgroundSize = 'cover';break;
+		case 3: document.body.style.background = "url(p4.gif)";document.body.style.backgroundSize = 'cover';break;
+		case 4: document.body.style.background = "url(p5.gif)";document.body.style.backgroundSize = 'cover';break;
+		case 5: document.body.style.background = "url(p6.gif)";document.body.style.backgroundSize = 'cover';break;
+		case 6: document.body.style.background = "url(p7.jpeg)";document.body.style.backgroundSize = 'cover';break;
+		case 7: document.body.style.background = "url(p8.jpeg)";document.body.style.backgroundSize = 'cover';break;
+		case 8: document.body.style.background = "url(p9.jpeg)";document.body.style.backgroundSize = 'cover';break;
+		case 9: document.body.style.background = "url(p10.jpeg)";document.body.style.backgroundSize = 'cover';break;
+   }
+	//document.body.style.background = "url(cc)";
+	
+	
+	var main = document.getElementById('main');
+	var color = document.getElementById('color'); 
+	for(var i=0;i<390;i++){
+		var grid = document.createElement("div");
+		grid.className = 'grid';
+		main.appendChild(grid);
+	}
+	var flag = new Array(390);
+	var road = [];
+	for (var i =0; i<390; i++) flag[i]=0;
+	var girds = document.getElementsByClassName('grid');
+	var row = Math.floor(Math.random()*3)+6;
+	var now = row*30;
+	
+	//console.log(now);
+	//console.log(girds)
+	girds[now].style.background = '#aca411';
+	flag[now] = 1;
+	road.push(now);
+	while((now+1)%30!=0){
+		var direction = Math.floor(Math.random()*6);
+		var tmp;
+		switch(direction){
+			case 0: tmp = now - 30;break;
+			case 1: tmp = now + 1;break;
+			case 2: tmp = now + 1;break;
+			case 3: tmp = now + 1;break;
+			case 4: tmp = now + 1;break;
+			case 5: tmp = now + 30;break;
+		}
+		if(tmp>=0 && tmp<390 && flag[tmp]==0){
+			now = tmp;
+			girds[now].style.background = '#ddddda';
+			flag[now] = 1;
+			road .push(now);
+		}
+	}
+	
+	//生成颜色
+	function getColor(){
+		var rgb = [Math.floor(Math.random()*256), Math.floor(Math.random()*256), Math.floor(Math.random()*256)];
+		rgbStyle = "rgb(" + rgb.join(",") + ")";
+		return [rgb, rgbStyle];
+	}
+	function getLvColor(color, ratio) {
+		var rgb = color.map(function (item) {
+			return item + ratio;
+		}),
+		rgbStyle = "rgb(" + rgb.join(",") + ")";
+		return [rgb, rgbStyle];
+	}
+	function addColor(){
+		var ratio = [-120,-90,-60,-30,0,30,60,90,120]
+		ratio.sort(function(){
+			return Math.random() - 0.5;
+		})
+		console.log(ratio)
+		
+		//var baseColor = getColor();
+		//girds[road[0]].style.background = baseColor[1];
+		
+		for(var i=0;i<9;i++){
+			var grid = document.createElement("div");
+			grid.className = 'grid_color';//qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
+			var oneColor = getLvColor(baseColor[0], ratio[i])[1];//oooooooooooooooooooooooooooooooo
+			//console.log(oneColor);
+	           grid.style.background = oneColor;
+	           if(ratio[i]==0) grid.next = 1;
+	           else grid.next = 0;
+	           color.appendChild(grid);//oooooooooooooooooooooooooooooooooooooooooooooooooooo114514
+		}
+	}
+	//addColor();
+	
+	var step=0;
+	function go(){
+		if(step==road.length){
+			alert("闯关成功,你的得分为" + score.innerHTML);
+			window.location.href = '游戏说明页.html';
+			return;
+		}
+	    baseColor = getColor();
+		girds[road[step]].style.background = baseColor[1];
+		color.innerHTML = '';
+		addColor();
+		
+		colors = document.getElementsByClassName('grid_color');
+		//console.log(colors.length);
+		for(var i=0;i<colors.length;i++){
+			colors[i].onclick = function(){
+				//console.log(this.next);
+				if(this.next == 1){
+					step = step + 1;
+					score.innerHTML = Number(score.innerHTML) + 10;
+					go();
+				}else{
+					alert("选错了。。。再来一次!");
+					score.innerHTML = score.innerHTML - 2;
+				}
+			}
+		}
+	}
+	go();
+</script>
+</html>
