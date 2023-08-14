@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>打字练习</title>
+</head>
+<style>
+	.top{
+		background: #F8888A;
+		text-align: center;
+		padding: 50px 0;
+	}
+	h1{
+		color: #fff;
+	}
+	button{
+		width: 7%;
+		height: 50px;
+		background: #A2E9C2;
+		border-radius: 10px;
+		vertical-align: top;
+		cursor: pointer;
+	}
+	button:hover{
+		background: #8DFF50;
+	}
+	ul{
+		list-style-type: none;
+	}
+	ul li{
+		font-size: 25px;
+		background: #FFFBA1;
+		padding: 15px 50px;
+		position: relative;
+		height: 30px;
+	}
+	ul li:nth-child(odd){
+		background: #FFF863;
+	}
+	h10{
+		font-size: 20px;
+		position: absolute;
+		right: 0px;
+		cursor: pointer;
+	}
+</style>
+<body>
+	<div class="top">
+		<div>
+			<h1>打字练习</h1>
+			<button onClick="start()" id="ks">开始</button>
+		</div>
+		<h12 id="scores">分数：0</h12>
+		<h12 id="scores2"></h12>
+	</div>
+	<ul id="list">
+		<li id="1"></li>
+		<li id="2"></li>
+		<li id="3"></li>
+		<li id="4"></li>
+		<li id="5"></li>
+		<li id="6"></li>
+		<li id="7"></li>
+		<li id="8"></li>
+		<li id="9"></li>
+		<li id="10"></li>
+		<li id="11"></li>
+		<li id="12"></li>
+		<li id="13"></li>
+		<li id="14"></li>
+		<li id="15"></li>
+	</ul>
+</body>
+<script>
+	var score = 0;
+	var t = 0;
+	var a = [11];
+	var zt = 0;
+	var i = 1;
+	function start(){
+		score = 0;
+		t = 0;
+		a = [11];
+		i = 1;
+		zt = 0;
+		
+		t = setInterval(function(){
+			if(i == 16){
+				alert("你输了");
+				alert("你的分数是：" + score)
+				clearInterval(t);
+			}
+			
+			var p;
+			for(p = 1;p <= 15;p++){
+				if(document.getElementById(p).innerHTML == ''){
+					a[p] = Math.floor(Math.random()*(90+1-65)+65);
+					document.getElementById(p).innerHTML = String.fromCharCode(a[p]);
+					break;
+				}
+			}
+			
+		i = p+1;
+		},500);
+		
+		var imgIndex;
+		//感谢敬爱的杨丹老师付出宝贵的生命为我调试代码
+		window.onkeydown = function(){
+			var j;
+			for(j = 1;j <= 15;j++){
+				if(event.keyCode == a[j]){
+					zt = 1;
+					i = i-1;
+					score++;
+					document.getElementById("scores").innerHTML = "分数：" + score;
+					document.getElementById("scores2").innerHTML = "+1";
+					for(var k = j;k <= 15;k++){
+						a[k] = a[k+1];
+						document.getElementById(k).innerHTML = document.getElementById(k+1).innerHTML;
+					}
+					break;
+				}
+			}
+			if(zt == 0){
+				score = score-5;
+				document.getElementById("scores").innerHTML = "分数：" + score;
+				document.getElementById("scores2").innerHTML = "-5";
+			}
+		}
+	}
+</script>
+</html>
