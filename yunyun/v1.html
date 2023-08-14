@@ -1,0 +1,413 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>云云起始页\(￣︶￣*\)</title>
+
+<style>
+	body{
+		background: url(bg.jpg);
+		background-size: cover;
+		text-align:right;
+		
+	}
+	#bian{
+		position: absolute;
+		top: -10px;
+		left:-10px;
+		text-align: left;
+		
+	}
+	h1{
+		margin-right:70px;
+		color:#ffffff;
+		font-size: 70px;
+		font-family: Fixedsys, 'TsangerYuMo W02';
+	}
+	h2{
+		position: absolute;
+		right:75px;
+		top:-17px;
+		color:#725E82;
+		font-size: 70px;
+		font-family: Fixedsys, 'TsangerYuMo W02';
+		
+		
+	}
+	#rainbow{
+		position: absolute;
+		top: 60px;
+		right:20px;
+		text-align: right;
+		
+	}
+	#clock{
+		position: absolute;
+		bottom:150px;
+		left:40px;
+		text-align: right;
+	}
+	h3{
+		position: absolute;
+		bottom:80px;
+		margin-left:40px;
+		text-align: left;
+		font-family: "TsangerYuMo W02";
+		color: aliceblue;
+		font-size: 25px;
+	}
+	h4{
+		position: absolute;
+		text-align: left;
+		color:#d7ebfe;
+		top: -60px;
+		left: 40px;
+		font-size: 70px;
+		font-family: Fixedsys, 'TsangerYuMo W02';
+	}
+	h5{
+		position: absolute;
+		top:55px;
+		margin-left:40px;
+		text-align: left;
+		font-family: "TsangerYuMo W02";
+		color: aliceblue;
+		font-size: 40px;
+		
+	}
+	form{
+		position: absolute;
+		text-align: left;
+		margin-left: 35px;
+		top:115px;
+		color:#9C8CBF;
+		font-family:"TsangerYuMo W02";
+		font-size: 25px;
+		font-weight:bold;
+	}
+	#alert{
+		position:absolute;
+		left:430px;
+		top:210px;
+		z-index: 100;
+		color:#773A5E;
+		
+		text-decoration:none;
+	}
+	#yuchaoclay{
+	position:absolute;
+	right:35px;
+	bottom:50px;
+	color:white;
+	height:330px;
+	width:250px;
+	background:white;
+	
+	}
+	#song{
+	position:absolute;
+	right:44px;
+	bottom:59px;
+	color:#d7ebfe;
+	height:360px;
+	width:270px;
+	background:#d7ebfe;
+	
+	}
+	#song_cover{
+	
+	right:44px;
+	bottom:59px;
+	color:grey;
+	height:270px;
+	width:270px;
+	background-image:url();
+	
+	
+	}
+	#song_info{
+	right:44px;
+	bottom:59px;
+	color:#d7ebfe;
+	height:80px;
+	width:270px;
+	background:#d7ebfe;
+	
+	}
+	#song_name{
+		
+		color:grey;
+		font-family:"TsangerYuMo W02";
+		font-size: 25px;
+		font-weight:bold;
+		margin-right:110px;
+		bottom:110px;
+		width:100%;
+		text-align:left;
+	}
+	#singer_name{
+		
+		color:grey;
+		font-family:"TsangerYuMo W02";
+		font-size: 30px;
+		font-weight:bold;
+		margin-right:110px;
+		bottom:110px;
+		width:100%;
+		text-align:left;
+		
+	}
+	#JRGQ{
+		writing-mode:tb-rl; 
+		position:absolute;
+		color:cadetblue;
+		font-family:"TsangerYuMo W02";
+		font-size: 30px;
+		font-weight:bold;
+		bottom:290px;
+		right: 330px;
+		text-align:left;
+		
+	}
+	#time{
+		position:absolute;
+		color:#44617b;
+		font-family:"TsangerYuMo W02";
+		font-size: 55px;
+		font-weight:bold;
+		bottom:150px;
+		left: 120px;
+		text-align:left;
+	}
+	#play_button{
+		position: absolute;
+		bottom: 65px;
+		right:55px;
+		text-align: right;
+		z-index:9999;
+	}
+	#quicklinks{}
+	#ql1{
+		position: absolute;
+		bottom:25px;
+		left:48px;
+		color:white;
+		height:60px;
+		width:60px;
+		background:white;
+		border-radius:15px;
+		box-shadow: 5px 5px 5px #888888;
+		
+		
+	}
+	#ql2{
+		position: absolute;
+		bottom:25px;
+		left:140px;
+		color:white;
+		height:60px;
+		width:60px;
+		background:white;
+		border-radius:15px;
+		box-shadow: 5px 5px 5px #888888;
+	}
+	#ql3{
+		position: absolute;
+		bottom:25px;
+		left:232px;
+		color:white;
+		height:60px;
+		width:60px;
+		background:white;
+		border-radius:15px;
+		box-shadow: 5px 5px 5px #888888;
+	}
+	#ql4{
+		position: absolute;
+		bottom:25px;
+		left:324px;
+		color:white;
+		height:60px;
+		width:60px;
+		background:white;
+		border-radius:15px;
+		box-shadow: 5px 5px 5px #888888;
+	}
+	#ql5{
+		position: absolute;
+		bottom:25px;
+		left:416px;
+		color:white;
+		height:60px;
+		width:60px;
+		background:white;
+		border-radius:15px;
+		box-shadow: 5px 5px 5px #888888;
+	}
+	#txt1{
+		position: absolute;
+		bottom:45px;
+		left:60px;
+		color:#383838;
+		text-decoration:none;
+		margin-right:10px;
+		text-align = left;
+		font-family: "TsangerYuMo W02";
+	}#txt2{
+		position: absolute;
+		width:40px;
+		bottom:37px;
+		left:143px;
+		color:#383838;
+		text-decoration:none;
+		margin-right:10px;
+		text-align = left;
+		font-family: "TsangerYuMo W02";
+	}
+	#txt3{
+		position: absolute;
+		width:40px;
+		bottom:37px;
+		left:237px;
+		color:#383838;
+		text-decoration:none;
+		margin-right:10px;
+		text-align = left;
+		font-family: "TsangerYuMo W02";
+	}
+	#txt4{
+		position: absolute;
+		bottom:45px;
+		left:330px;
+		color:#383838;
+		text-decoration:none;
+		margin-right:10px;
+		text-align = left;
+		font-family: "TsangerYuMo W02";
+	}
+	#txt5{
+		position: absolute;
+		bottom:45px;
+		left:420px;
+		color:#383838;
+		text-decoration:none;
+		margin-right:10px;
+		text-align = left;
+		font-family: "TsangerYuMo W02";
+	}
+	</style>
+	<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+    var albums = '['
+				+ '{"cover" : "https://y.qq.com/music/photo_new/T002R300x300M000001KB1PW28PgcO_2.jpg?max_age=2592000", "title" : "Colder","playurl":"https://music.163.com/#/song?id=1330941522" ,"singer":"Nina Nesbitt" },'
+				+ '{"cover" : "https://y.qq.com/music/photo_new/T002R300x300M0000014v4LP2O21ah_1.jpg?max_age=2592000", "title" : "Telescope","playurl":"https://music.163.com/#/song?id=522444650" ,"singer":"Tim Legend / Transviolet" },'
+				+ '{"cover" : "https://y.qq.com/music/photo_new/T002R300x300M000000klqQm2Dy4vd_1.jpg?max_age=2592000", "title" : "Crash","playurl":"https://music.163.com/#/song?id=1876959265" ,"singer":"Clara Mae" },'
+				+ '{"cover" : "https://y.qq.com/music/photo_new/T002R300x300M000001DuW2Y20ZaFr_1.jpg?max_age=2592000" , "title" : "Relax, Take It Easy","playurl":"https://music.163.com/#/song?id=1897275189" ,"singer":"Mika" },'
+				+ '{"cover" : "https://y.qq.com/music/photo_new/T002R300x300M000002KBlWY3G63hO_1.jpg?max_age=2592000" , "title" : "Forgettable","playurl":"https://music.163.com/#/song?id=33035577" ,"singer":"Project 46 / Olivia" },'
+				+ '{"cover" : "https://y.qq.com/music/photo_new/T002R300x300M000000kaWZ706b5GN_1.jpg?max_age=2592000" , "title" : "Touch","playurl":"https://music.163.com/#/song?id=534228257" ,"singer":"3LAU / Carly Paige" },'
+				+ '{"cover" : "https://y.qq.com/music/photo_new/T002R300x300M000002SfwLw0sfgZ6_2.jpg?max_age=2592000" , "title" : "Remember Our Summer","playurl":"https://music.163.com/#/song?id=1384450197" ,"singer":"FrogMonster" }]';
+				
+	var jsonObj = $.parseJSON(albums);
+	var arr1=[];
+    for(let i in jsonObj){
+            arr1.push(jsonObj[i]);            
+    };
+	//var i = Math.floor(Math.random()*arr1.length);
+	var i = parseInt(Math.random()*arr1.length,10)+1;
+	var obj = arr1[i];
+	
+	$(document).ready(function(){
+		$("#song_cover").css('background-image','url('+obj.cover+')');
+		$("#song_name").html(obj.title);
+		$("#singer_name").html(obj.singer).css("font-size","16px");
+		$("#play_button").html(obj.playurl);
+	});
+	function play(){
+		//window.location.href = obj.playurl;
+		window.open (obj.playurl,'newwindow');
+	}
+		
+	
+		
+
+	
+ var b=0
+ var c=0
+ var t
+ function jishi()
+ {
+
+  document.getElementById('tt').value=c
+  c=c+1
+  t=setTimeout("jishi()",1000)
+
+  if(c==60)
+
+  {
+
+  c=0;
+
+  b=b+1;
+
+  xs.value=b
+
+  }
+
+}
+ </script>
+</head>
+
+<body  onLoad="jishi()">
+	<h1>云云起始页</h1>
+	<h2>云云起始页</h2>
+	<img id="bian" src="baibian.png" width="500px">
+	<img id="rainbow" src="rain.png" width="55px">
+	<img id="clock" src="clock.png" width="70px">
+	<img id="play_button" src="plau.png" width="50px" onClick="play()">
+	<h3>不断地重复决绝 又重复幸福 终有绿洲摇曳在沙漠 ——泰戈尔《生如夏花》</h3>
+	<h4>你好！</h4>
+	<h5>欢迎来到云云起始页</h5>
+	<a href="#" id="alert" onclick="javascript:alert('可以记录你的上网时间or学习时间，也可以当做一个简易的秒表~(￣▽￣)~')">[这个计时是干什么用的？点我查看]</a>
+	<div id="yuchaoclay">mmmm</div>
+	<div id="song">
+		<div id="song_cover">
+		</div>
+		<div id="song_info">
+			<div id="song_name">
+				请刷新网页~
+			</div>
+			<div id="singer_name">
+				
+			</div>
+		</div>
+	</div>
+	<div id="JRGQ">今日歌曲</div>
+	<div id="time"></div>
+	<div id="quicklinks"><a target="_blank" href="https://www.baidu.com/" id="ql1" ></a><a target="_blank" href="https://mail.qq.com/"  id="ql2"></a><a href id="ql3"></a><a  target="_blank" href id="ql4"></a><a target="_blank" href id="ql5" ></a><a target="_blank" href="https://www.baidu.com/" id="txt1" >百度</a><a target="_blank" href="https://mail.qq.com/" id="txt2" >QQ邮箱</a><a target="_blank" href="https://fanyi.baidu.com/" id="txt3" >百度翻译</a><a target="_blank" href="https://qdzx.idsp.yunxiao.com/" id="txt4" >爱云校</a><a target="_blank" href="https://airportal.cn/" id="txt5" >传文件</a></div>
+	
+	
+	<form>
+		
+		<br><br>
+		您已经停留<input id="xs">分钟
+		<input id="tt">秒<br><br>
+	</form>
+</body>
+<script>
+	var time = document.getElementById("time");
+	var t = setInterval(function(){
+		var today=new Date();//定义日期对象
+		var hh=today.getHours();//通过日期对象的getHours方法返回小时   
+		var mm=today.getMinutes();//通过日期对象的getMinutes方法返回分钟   
+		var ss=today.getSeconds();//通过日期对象的getSeconds方法返回秒 
+		if(hh<10) hh='0'+hh;
+		if(mm<10) mm='0'+mm;
+		if(ss<10) ss='0'+ss;
+		time.innerHTML = hh + ':' + mm + ':' + ss;
+	},1000);
+	
+	//console.log(hh);
+</script>
+</html>
