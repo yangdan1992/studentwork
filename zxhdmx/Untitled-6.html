@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>真心话大冒险 ver.114514.1919810 update(真心话/大冒险)</title>
+<style>
+	body{
+		background: teal;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}	
+	button{
+		color: teal;
+		height: 200px;
+		width: 60%;
+		font-size:48px ;
+		border-radius: 10px;
+		border: none;
+		font-weight: bold;
+		margin-top:20px;
+	}
+</style>
+</head>
+
+<body>
+	<button onClick="begin()">真心话</button>
+	<button onClick="beginning()">大冒险</button>
+	
+<script>
+	var str = window.location.href;
+	var result = str.split("?");
+	alert("请"+result[1]+"号玩家选择");
+	
+	function begin(){
+		window.location.href = "untitled-7.html"; 
+	}
+	function beginning(){
+		window.location.href = "untitled-8.html"; 
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>真心话大冒险 ver.114514.1919810 update(大冒险)</title>
+<style>
+	body{
+		background: teal;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	div{
+		width: 80%;
+		height: 260px;
+		background: #00B3B3;
+		border-radius: 20px;
+		font-size: 48px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 260px;
+		color:aliceblue;
+	}
+	button{
+		color: teal;
+		height: 50px;
+		width: 35%;
+		font-size:24px ;
+		border-radius: 10px;
+		border: none;
+		font-weight: bold;
+		margin-top:20px;	
+</style>
+</head>
+
+<body>
+	<div id = "box">大冒险</div>
+	<button id = "start" onClick="begin()">开始</button>
+	<button id = "back" onClick="beginning()">开始下一回合</button>
+	
+</body>
+	<script>
+		var state = 0
+		var start = document.getElementById('start');
+		var box = document.getElementById('box')
+		var namelist = ["请对在场的所有人说：“我是来自卡塔尔的王子”","请用夹子音说一句你觉得最恶心的话","请对你十秒钟后看见的第一个人说：“祝你生活愉快”","请对你最喜欢的老师写一句土味情话并贴在公共区域","请对天下跪并发誓：“我，不会背叛你！”","请随机选择一人单膝下跪说“我爱你！嫁给我吧！假的。”","请用你最高傲的声音与姿态说：“今晚，你是我的宠物”","请对在场你最讨厌的人说：“小菜~来吗~打一架~”","请随机找一个人说：“你知道吗？你很让我印象深刻哦~”","随机找一位异性摸一下TA的头",""];
+		var t;
+		function begin(){
+			if(state == 0){
+				start.innerHTML = '来吧';
+				state = 1;
+			    
+				t = setInterval(function(){
+					var sj = Math.floor(Math.random()*namelist.length);
+				    box.innerHTML = namelist[sj]
+				},50)
+				
+			}else{
+				start.innerHTML = '开始';
+				state = 0;
+				clearInterval(t);
+			}
+			
+			
+		}
+		function beginning(){
+			window.location.href = "untitled-4.html"
+		}
+	</script>
+</html>

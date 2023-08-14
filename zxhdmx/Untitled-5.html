@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>真心话大冒险 ver.114514.1919810 update(选取幸运之子)</title>
+<style>
+	body{
+		background: teal;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	div{
+		width: 70%;
+		height: 260px;
+		background: #00B3B3;
+		border-radius: 20px;
+		font-size: 48px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 260px;
+		color:aliceblue;
+	}
+	button{
+		color: teal;
+		height: 50px;
+		width: 70%;
+		font-size:24px ;
+		border-radius: 10px;
+		border: none;
+		font-weight: bold;
+		margin-top:20px;
+	}
+</style>
+</head>
+
+<body>
+	<div id = "box">来自世界第一天才的神之手选取幸运之子</div>
+	<button id = "start" onClick="begin()">开始抽取(若随机速度减慢请点击任意空白区域以加速)</button>
+	<button id = "sure" onClick="beginning()">确定是TA（确信</button>
+<script>
+	var str = window.location.href;
+	var result = str.split("?");
+	var arr = []
+	for(var i=1;i<=result[1];i++)
+		arr.push(i)
+	var state = 0
+		var start = document.getElementById('start');
+		var box = document.getElementById('box')
+		var t;
+		function begin(){
+			if(state == 0){
+				start.innerHTML = '就是你了';
+				state = 1;
+			    
+				t = setInterval(function(){
+					var sj = Math.floor(Math.random()*arr.length);
+				    box.innerHTML = arr[sj]
+				},50)
+				
+			}else{
+				start.innerHTML = '开始';
+				state = 0;
+				clearInterval(t);
+			}
+		}
+	    function beginning(){
+			if(state ==0) alert("请先使用世界第一天才的神之手抽取幸运之子");
+			else window.location.href = "untitled-6.html?"+box.innerHTML; 
+		}
+	
+</script>
+</body>
+</html>

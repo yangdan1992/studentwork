@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>真心话大冒险 ver.114514.1919810 update(真心话)</title>
+<style>
+	body{
+		background: teal;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	div{
+		width: 80%;
+		height: 260px;
+		background: #00B3B3;
+		border-radius: 20px;
+		font-size: 48px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 260px;
+		color:aliceblue;
+	}
+	button{
+		color: teal;
+		height: 50px;
+		width: 35%;
+		font-size:24px ;
+		border-radius: 10px;
+		border: none;
+		font-weight: bold;
+		margin-top:20px;
+</style>
+</head>
+
+<body>
+	<div id = "box">真心话</div>
+	<button id = "start" onClick="begin()">开始</button>
+	<button id = "back" onClick="beginning()">开始下一回合</button>
+</body>
+	<script>
+		var state = 0
+		var start = document.getElementById('start');
+		var box = document.getElementById('box')
+		var namelist = ["请说出你的第一个网名","请说出你小学时最讨厌的老师","请说出你最近一周听到的最废话的话","请说出你最近一周听到的最幼稚的言论","请说出你昨晚十点在干什么","请说出你最近一次用浏览器搜索的内容","请说出你今天见到的长的最特殊的人","请说出你说过的最中二的一句话","请说出一个和你同床共枕过的人","请说出一个在场你印象最深的人","请说出你最喜欢的一句话","请说出你目前知道的最热衷于游戏的人","请说出你目前知道的特长最多的人","请说出你目前知道的最跨性别的人","请说出一种你最喜欢的声音","请说出你理想型的三个特征","请说出你最讨厌的一句话","请说出一种你最讨厌的声音","请说出你身边人中你觉得最聪明的人","请说出你最近一周最让你愤怒的事情","请说出对你打击最大的一件事","请说出你现在用电子产品最经常干的事情"];
+		var t;
+		function begin(){
+			if(state == 0){
+				start.innerHTML = '来吧';
+				state = 1;
+			    
+				t = setInterval(function(){
+					var sj = Math.floor(Math.random()*namelist.length);
+				    box.innerHTML = namelist[sj]
+				},50)
+				
+			}else{
+				start.innerHTML = '开始';
+				state = 0;
+				clearInterval(t);
+			}
+			
+			
+		}
+		function beginning(){
+			window.location.href = "untitled-4.html"
+		}
+	</script>
+</html>
