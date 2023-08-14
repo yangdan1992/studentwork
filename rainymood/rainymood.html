@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>期末作业——rainymood</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#begin1{
+		width: 25%;
+		height: 100vh;
+		background:url(图片/rainy.png);
+		background-size: cover;	
+		float: left;
+	}
+	#begin2{
+		width: 25%;
+		height: 100vh;
+		background: url(图片/firewood.png);
+		background-size: cover;
+		float: left;
+	}
+	#begin3{
+		width: 25%;
+		height: 100vh;
+		background: url(图片/wave.jpg);
+		background-size: cover;
+		float: left;
+	}
+	#begin4{
+		width: 25%;
+		height: 100vh;
+		background: url(图片/bird.jpg);
+		background-size: cover;
+		float: left;
+	}
+	#begin5{
+		width: 25%;
+		height: 100vh;
+		background: url(图片/play.png);
+		background-size: cover;
+		float: left;
+	}
+	#begin6{
+		width: 25%;
+		height: 100vh;
+		background: url(图片/play.png);
+		background-size: cover;
+		float: left;
+	}
+	#begin7{
+		width: 25%;
+		height: 100vh;
+		background: url(图片/play.png);
+		background-size: cover;
+		float: left;
+	}
+	#begin8{
+		width: 25%;
+		height: 100vh;
+		background: url(图片/play.png);
+		background-size: cover;
+		float: left;
+	}
+	#wenbenkuang{
+		font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+		width: 1000px;
+		height: 1000px;
+		font-size: 90px;
+		position: absolute;
+		color: white;
+		top: 60px;
+		left: 500px;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="begin1" class="began1">
+		<img style="position: absolute; top: 40vh; left: 10%;z-index: 100" id="image_button1" src="图片/play.png" onClick="myFunction1()">
+	</div> 
+	    
+	<div id="begin2" class="begen2">
+		<img style="position: absolute; top: 40vh; left: 34%;z-index: 100" id="image_button2" src="图片/play.png" onclick="myFunction2()">
+	</div> 
+	    
+	<div id="begin3" class="begen3">
+		<img style="position: absolute; top: 40vh; left: 59%;z-index: 100" id="image_button3" src="图片/play.png" onclick="myFunction3()">
+	</div> 
+	    
+	<div id="begin4" class="began4">
+		<img style="position: absolute; top: 40vh; left: 84%;z-index: 100" id="image_button4" src="图片/play.png" onclick="myFunction4()">
+	</div> 
+	    
+	<audio controls>
+	  <source src="音频/bird.mp3" type="audio/mpeg">
+	</audio>
+	<audio controls>
+		<source src="音频/firewood.mp3" type="audio/mpeg">
+	</audio>
+	<audio controls>
+	  <source src="音频/rainy.mp3" type="audio/mpeg">
+	</audio>
+	<audio controls>
+	  <source src="音频/wave.mp3" type="audio/mpeg">
+	</audio>
+	<div id="wenbenkuang">white noise</div>
+	</body>
+	<script type="text/javascript">
+	var x1 = document.getElementsByTagName('audio')[0];
+	var img1 = document.getElementById("image_button1");
+	var isPlay1 = false;
+	var x2 = document.getElementsByTagName('audio')[1];
+	var img2 = document.getElementById("image_button2");
+	var isPlay2 = false;
+	var x3 = document.getElementsByTagName('audio')[2];
+	var img3 = document.getElementById("image_button3");
+	var isPlay3 = false;
+	var x4 = document.getElementsByTagName('audio')[3];
+	var img4 = document.getElementById("image_button4");
+	var isPlay4 = false;
+	function myFunction1(){
+		if (isPlay1 == false) {
+			x1.play();
+			isPlay1 = true;
+			img1.src = '图片/pause.png';
+		}else{
+			x1.pause();
+            isPlay1 = false;
+			img1.src = '图片/play.png';
+		}
+	}
+		function myFunction2(){
+		if (isPlay2 == false) {
+			x2.play();
+			isPlay2 = true;
+			img2.src = '图片/pause.png';
+		}else{
+			x2.pause();
+            isPlay2 = false;
+			img2.src = '图片/play.png';
+		}
+	}
+		function myFunction3(){
+		if (isPlay3 == false) {
+			x3.play();
+			isPlay3 = true;
+			img3.src = '图片/pause.png';
+		}else{
+			x3.pause();
+            isPlay3 = false;
+			img3.src = '图片/play.png';
+		}
+	}
+		function myFunction4(){
+		if (isPlay4 == false) {
+			x4.play();
+			isPlay4 = true;
+			img4.src = '图片/pause.png';
+		}else{
+			x4.pause();
+            isPlay4 = false;
+			img4.src = '图片/play.png';
+		}
+	}
+	</script>
+	
+	
+	
+	</html>
