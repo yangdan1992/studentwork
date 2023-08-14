@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title> 
+<style>
+	body{
+		overflow: hidden;
+		background: #000;
+		color: #FFFFFF;
+	}
+	.letter{
+		position: absolute;
+		font-weight: bold;
+	}
+	.btn{
+		text-align: center;
+	}
+	#msg{
+		color: #fff;
+	}
+</style>
+</head>
+	
+	
+<body>
+	<div class="btn">
+		<button id="startBtn" onClick="startgame(this)">开始</button>
+		<button id="over" onClick="over()">结束</button>
+	</div>
+	
+	<div id="msg">得分：</div>
+
+</body>
+<script>
+ 	var CODE = ["Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G","H","J","K","L","Z","X","C","V","B","N","M"];
+	var color = ["white","red","blue","green","yellow","pink","purple","aliceblue","antiquewhite","aqua","aquamarine","bisque","burlywood","cadetblue","chartreuse","coral","chocolate","yellowgreen","cornflowerblue"];
+
+
+	function begin(){
+		var sj = Math.floor(Math.random()*26); 
+		var size = Math.floor(Math.random()*96)+16;
+		var cl = Math.floor(Math.random()*color.length);
+		var div = document.createElement("div");
+		div.className = "letter";
+		div.style.top = "50px";
+		div.style.fontSize = size+"px";
+		div.style.color = color[cl];
+		//console.log(div.style.fontSize);
+		div.innerHTML = CODE[sj];
+        var juli = Math.random()*document.documentElement.clientWidth;
+//		console.log(juli);
+//		alert(juli);
+		div.style.left = juli +"px";
+		document.body.appendChild(div);
+		return div;
+
+	}
+	var number = 0;
+	function removeLetter(letter){
+	clearInterval(letter.interval_id);	
+			letter.parentNode.removeChild(letter);
+		number = number - 20;
+			document.getElementById("msg").innerHTML = "得分："+number+"分";
+		}
+	function move(letter){
+		var height = document.documentElement.clientHeight;
+		letter.interval_id= setInterval(function(){
+			var top = parseInt(letter.style.top);
+			top = top + 1;
+			//alert(top);
+			
+			if (top>height){
+				removeLetter(letter);}
+
+			else{
+			letter.style.top = top + "px";
+			}
+			
+		},10);}
+	   var game_id;
+	 function startgame(startButton){
+	   startButton.disabled = true ;
+		 game_id = setInterval(function(){
+			   var letter = begin();
+		 move(letter);
+		 },1000) ;}
+	   
+	
+	    window.onload = function(){
+		document.getElementById("startBtn").disabled = false ;
+		document.onkeydown=function(event){
+			var keyCode = event.keyCode;
+			var code = String.fromCharCode(keyCode);
+			//alert (code)
+			var letters = document.getElementsByClassName("letter");
+			for (var i = 0 ; i< letters.length;i++){
+				var letter = letters[i];
+				if (letter.innerHTML == code){
+					
+					clearInterval(letter.interval_id);
+					letter.parentNode.removeChild(letter);
+					number = number + 10;
+					document.getElementById("msg").innerHTML = "得分："+number+"分";
+					break;
+				}
+			}
+		};
+		};
+	  function over(){
+		  alert("点右上角的×")
+	  }
+</script>
+</html>
