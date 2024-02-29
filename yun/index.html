@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>韵</title>
+<style>
+	
+	*{
+		margin: 0;
+		padding: 5px;
+	}
+	body{
+		background-color:#FEE4D0;
+		transition: background 2s;
+	}
+	.container{
+		
+	}
+	#img1,#img2{
+		transition: opacity 2s;
+		webkit-transition: opacity 2s;
+	}
+	
+	.btn{color: #3B4159;
+		margin-left: 700px;
+		margin-top:540px;
+	}
+	button{
+		height: 50px;
+		width: 96px;
+		border:none;
+		color: #3B4159;
+	}
+	.part101{
+		position: absolute;
+		top: 35px;
+		left: 540px;
+		opacity: 1;
+		
+	}
+	.part1{
+		position:absolute;
+		top: 176px;
+		left:737px;
+	}
+    .part2{
+		position: absolute;
+		top:400px;
+		left:500px;
+	
+}
+	.part3{
+		position:absolute;
+		top: 162px;
+		left:722px;
+		opacity: 0.6;
+	}
+	.part010{
+		position: absolute;
+		top:35px;
+		left: 540px;
+	}
+	.solid{
+		opacity: 1;
+	}
+	.transparent{
+		opacity: 0;
+	}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="part101"><img src="橙韵晚霞 (1).png" width="500" id="img1" class="solid"></div>
+		<div class="part010"><img src="橙韵晚霞 (2).png" width="500" id="img2" class="transparent"></div>
+		<div class="part1"><img src="圆形.png" width="50"></div>
+		<div class="part3"><img src="圆形.png" width="80" ></div>
+		<div class="part2"><img src="猫/cat.png" width="120"></div>
+	</div>
+	<div class="btn">
+	  <button onClick="change1()">暮</button>
+	  <button onClick="change2()">晨</button>
+	</div>
+</body>
+<script>
+	var img1 = document.getElementById("img1");
+	function change1(){
+		document.body.style.backgroundColor="#FEE4D0";
+		img2.className="transparent";
+	}
+	function change2(){
+		document.body.style.backgroundColor="#DDE6CF";
+		img2.className="solid";
+	}
+</script>
+</html>

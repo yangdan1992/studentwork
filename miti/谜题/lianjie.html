@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>第三关</title>
+	<style>
+		body{background:#12FF00;
+		text-align: center;
+		color:#FF00FD;
+		font-weight: 400;}
+		a{color:#12FF00;}
+		h1{  margin-top: 200px;	}
+		intup{color:#D94FFD;}
+	</style>
+</head>
+
+<body>
+	<h1>Stage 4</h1>
+	<p>谁是蠢蛋</p>
+	<input id="ans" type="text">
+	<button onClick="check()">ok</button>
+</body>
+	<script>
+		var ans = document.getElementById("ans");//获取页面中的文本输入框
+		function check(){
+			if(ans.value == Charlie){
+		//alert("回答正确");
+				window.location.href = "hi.html";
+			}else{
+				alert("回答错误");
+			}
+		}
+	</script>
+	
+	
+	</html>
