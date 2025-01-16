@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>数字炸弹</title>
+<style>
+*{
+   margin: 0;		
+   padding: 0;
+	}
+#container{
+		width: 550px;
+	    height:210px;
+	    margin:15px auto;/*调整外边距*/
+		text-align: center;
+		
+	}
+	ul{
+	    width:510px;
+		height:510px;
+		list-style: none;/*去掉字前默认的圆点*/
+	}
+	body{
+	background-color: #090909;
+	color:#FFFFFF;
+	text-align: center;
+	}
+h1{
+	margin-top：50px;
+	text-align: center;
+	}
+ul  li,ul a{
+		width: 100px;
+		height:100px;
+		border:1px solid #565656;
+		float:left;    
+		text-align:center;/*使文字居中*/
+		line-height: 100px;
+	}
+ul .b{
+		background: #ED1014;
+		color:#FFFFFF;
+		border-color: #ECEDED;
+	}
+ul .active{
+		background: #53C4E7;
+		color:#FFFFFF;
+		border-color: #F50E12;
+	}
+	info{
+		line-height: 24px;
+		colar:#9a9a9a;
+		text-align: center;  
+	}
+</style>
+</head>
+<body>
+<div id="container">
+	<ul>
+	    <a id="li-1">1</a>
+		<a id="li-2">2</a>
+		<a id="li-3">3</a>
+		<a id="li-4">4</a>
+		<a id="li-5">5</a>
+		<a id="li-6">6</a> 
+		<a id="li-7">7</a>
+		<a id="li-8">8</a>
+		<a id="li-9">9</a>
+		<a id="li-10">10</a>
+		<a id="li-11">11</a>
+		<a id="li-12">12</a>
+		<a id="li-13">13</a>
+		<a id="li-14">14</a>
+		<a id="li-15">15</a>
+		<a id="li-16">16</a>
+		<a id="li-17">17</a>
+		<a id="li-18">18</a> 
+		<a id="li-19">19</a>
+		<a id="li-20">20</a>
+		<a id="li-21">21</a>
+		<a id="li-22">22</a>
+		<a id="li-23">23</a>
+		<a id="li-24">24</a>
+		<a id="li-25">25</a>
+    </ul>
+</div>
+</body>
+	<h1> 数字炸弹-双人游戏</h1>	
+<script>
+ var sj = Math.floor(Math.random()*25);
+	var t=3;
+	console.log(sj)
+ var a = document.getElementsByTagName("a");
+	for(var i=0;i<a.length;i++){
+		a[i].id = i;
+	}
+	for(var i=0;i<a.length;i++){
+		a[i].onclick = function(){
+			this.className = "active";
+			if(this.id == sj){
+				this.style.background="red";
+				alert("fail");
+				var time = setInterval(function(){
+					t--;
+					if(t==0) window.location.href = "数字炸弹.html";
+				},1000);
+		}
+	}
+	}
+</script>
+</html>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="left">
+			<div class="tab" id="time" onClick="change(0)">时间</div>
+			<div class="tab" id="alarm" onClick="change(1)">闹钟</div>
+		</div>
+		<div class="right">
+			<div class="content"><span id="hour"></span>:<span id="minute"></span>:<span id="second"></span></div>
+			<div class="content">
+				<select name="小时" id="hours">
+					<option value="">小时</option>
+				 <option class="hour" value="1">1</option>
+				 <option class="hour" value="2">2</option>
+				 <option class="hour" value="3">3</option>
+				 <option class="hour" value="4">4</option>
+				 <option class="hour" value="5">5</option>
+			     <option class="hour" value="6">6</option>
+				 <option class="hour" value="7">7</option>
+				 <option class="hour" value="8">8</option>
+				 <option class="hour" value="9">9</option>
+				 <option class="hour" value="10">10</option>
+				 <option class="hour" value="11">11</option>
+				 <option class="hour" value="12">12</option>
+				 <option class="hour" value="13">13</option>
+			     <option class="hour" value="14">14</option>
+				 <option class="hour" value="15">15</option>
+				 <option class="hour" value="16">16</option>
+				 <option class="hour" value="17">17</option>
+			     <option class="hour" value="18">18</option>
+				 <option class="hour" value="19">19</option>
+				 <option class="hour" value="20">20</option>
+				 <option class="hour" value="21">21</option>
+			     <option class="hour" value="22">22</option>
+				 <option class="hour" value="23">23</option>
+				</select>
+				<select name="分钟" id="minutes">
+					 <option value="">分钟</option>
+				 <option class="minute" value="1">1</option>
+				 <option class="minute" value="2">2</option>
+				 <option class="minute" value="3">3</option>
+				 <option class="minute" value="4">4</option>
+				 <option class="minute" value="5">5</option>
+			     <option class="minute" value="6">6</option>
+				 <option class="minute" value="7">7</option>
+				 <option class="minute" value="8">8</option>
+				 <option class="minute" value="9">9</option>
+				 <option class="minute" value="10">10</option>
+				 <option class="minute" value="11">11</option>
+				 <option class="minute" value="12">12</option>
+				 <option class="minute" value="13">13</option>
+			     <option class="minute" value="14">14</option>
+				 <option class="minute" value="15">15</option>
+				 <option class="minute" value="16">16</option>
+				 <option class="minute" value="17">17</option>
+			     <option class="minute" value="18">18</option>
+				 <option class="minute" value="19">19</option>
+				 <option class="minute" value="20">20</option>
+				 <option class="minute" value="21">21</option>
+			     <option class="minute" value="22">22</option>
+				 <option class="minute" value="23">23</option>
+				 <option class="minute" value="24">24</option>
+				 <option class="minute" value="25">25</option>
+				 <option class="minute" value="26">26</option>
+				 <option class="minute" value="27">27</option>
+				 <option class="minute" value="28">28</option>
+			     <option class="minute" value="29">29</option>
+				 <option class="minute" value="30">30</option>
+				 <option class="minute" value="31">31</option>
+				 <option class="minute" value="32">32</option>
+				 <option class="minute" value="33">33</option>
+				 <option class="minute" value="34">34</option>
+				 <option class="minute" value="35">35</option>
+				 <option class="minute" value="36">36</option>
+			     <option class="minute" value="37">37</option>
+				 <option class="minute" value="38">38</option>
+				 <option class="minute" value="39">39</option>
+				 <option class="minute" value="40">40</option>
+			     <option class="minute" value="41">41</option>
+				 <option class="minute" value="42">42</option>
+				 <option class="minute" value="43">43</option>
+				 <option class="minute" value="44">44</option>
+			     <option class="minute" value="45">45</option>
+				 <option class="minute" value="46">46</option>
+				 <option class="minute" value="47">47</option>
+				 <option class="minute" value="48">48</option>
+				 <option class="minute" value="49">49</option>
+				 <option class="minute" value="50">50</option>
+				 <option class="minute" value="51">51</option>
+			     <option class="minute" value="52">52</option>
+				 <option class="minute" value="53">53</option>
+				 <option class="minute" value="54">54</option>
+				 <option class="minute" value="55">55</option>
+				 <option class="minute" value="56">56</option>
+				 <option class="minute" value="57">57</option>
+				 <option class="minute" value="58">58</option>
+				 <option class="minute" value="59">59</option>
+				 <option class="minute" value="60">60</option>
+				</select>
+				<button onClick="set_alarm()">确定</button>
+			</div>
+		</div>
+	</div>
+	<div id="alarm_show">
+		<span id="alarm_hour"></span>:<span id="alarm_minute"></span>
+	</div>
+</body>
+<style>
+	body{
+		display: flex;
+		width: 100%;
+		height: 100vh;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+	}
+	.container{
+		width: 50%;
+		height: 60vh;
+		background: #6191DB;
+		border-radius: 20px;
+		display: flex;
+	}
+	.left{
+		width: 40%;
+		height: 100%;
+		border-radius: 20px 0 0 20px;
+	}
+	.tab{
+		height: 50%;
+		text-align: center;
+		font-size: 48px;
+		font-weight: bold;
+		line-height: 210px;
+		cursor: pointer;
+		background: #E78889
+	}
+	#time{
+		border-top-left-radius: 20px;
+	}
+	.right{
+		width: 60%;
+		height: 100%;
+	}
+	.content{
+		font-size: 48px;
+		font-weight: bold;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+		display: none;
+		
+	}
+	#hours{
+		font-size: 50px;
+		height: 20%;
+		width: 40%;
+	}
+	#minutes{
+		font-size: 50px;
+		height: 20%;
+		width: 40%;
+    }
+	select,button{
+		font-size: 32px;
+		font-weight: bold;
+	}
+	button{
+		display: block;
+	}
+	.content:nth-child(2){
+		flex-direction: column;
+	}
+	#alarm_show{
+		position: absolute;
+		width: 150px;
+		height: 80px;
+		background: #14A691;
+		top: 0px;
+		right: 0px;
+		font-size: 48px;
+		font-weight: bold;
+		display: none;
+		text-align: center;
+		line-height: 100px;
+	}
+</style>
+<script>
+	var content = document.getElementsByClassName("content");
+	var tab = document.getElementsByClassName("tab");
+	content[0].style.display = "flex";
+	tab[0].style.background = "#F6A9AB";
+	function change(idx){
+		for(var i=0;i<2;i++){
+			content[i].style.display = "none";
+			tab[i].style.background = "#E78889";
+		}
+		content[idx].style.display = "flex";
+		tab[idx].style.background = "#F6A9AB";
+	}
+	var hour = document.getElementById("hour");
+	var minute = document.getElementById("minute");
+	var second = document.getElementById("second");
+    var t = setInterval(function(){
+		var now = new Date();
+		var hours = now.getHours();
+		var minutes = now.getMinutes();
+		var seconds = now.getSeconds();
+		if (hours < 10) hours = '0' + hours;
+		if (minutes < 10) minutes = '0' + minutes;
+		if (seconds < 10) seconds = '0' + seconds;
+		hour.innerHTML = hours;
+		minute.innerHTML = minutes;
+		second.innerHTML = seconds;
+	},1000)
+	var hours = document.getElementById("hours");
+	var minutes = document.getElementById("minutes");
+	var alarm_show = document.getElementById("alarm_show");
+	var alarm_hour = document.getElementById("alarm_hour");
+	var alarm_minute = document.getElementById("alarm_minute");
+	var opt_hour = document.getElementsByClassName("hour");
+	var opt_minute = document.getElementsByClassName("minute");
+	var t_alarm;
+	function check(){
+		var now = new Date();
+		var hours = now.getHours();
+		var minutes = now.getMinutes();
+		
+		if(hours == parseInt(alarm_hour.innerHTML) && minutes == parseInt(alarm_minute.innerHTML)){
+			clearInterval(t_alarm);
+			alert("闹钟时间到");
+			alarm_show.style.display = "none";
+		}
+	}
+	function set_alarm(){
+		console.log(hours.selectedIndex)
+		var hour = opt_hour[hours.selectedIndex-1].value;
+		var minute = opt_minute[minutes.selectedIndex-1].value;
+		alarm_hour.innerHTML = hour;
+		alarm_minute.innerHTML = minute;
+		alarm_show.style.display = "block";
+		t_alarm = setInterval(check,1000);
+	}
+</script>
+</html>

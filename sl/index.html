@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{
+		display: flex;
+		width: 100%;
+		height: 100vh;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		
+	}
+	#img_1{
+		width: 100px;
+		height: 100px;
+		margin: auto;
+		margin-top: 30px;
+		display: block;
+	}
+	#backgrounddiv{
+		background-color:#00ABFF;
+		width: 100%;
+		height: 1000px;
+		margin: 0;
+		
+	}
+	.box{
+		width: 50px;
+		height: 50px;
+		border: 2px solid #FF8D0E;
+		float: left;
+		background-size: 50px 50px;
+		background-position: center;
+		background: #fff;
+		text-align: center;
+		line-height: 50px;
+		font-size: 24px;
+/*		background: url("地雷图片.png");*/
+	}
+	#functiondiv{
+		width: 510px;
+		height: 510px;
+		margin: auto;
+		margin-top: 20px;
+	}
+	.list{
+		display: none;
+	}
+	#time{
+		text-align: center;
+		margin-top: 20px;
+		font-size: 50px;
+		width: 100%;
+	}
+	#score{
+		font-size: 50px;
+		margin-left: 735px;
+		margin-top: 50px;
+		text-decoration-color: #10EC52;
+	}
+	#outline{
+		font-size: 50px;
+		text-decoration-color: #10EC52;
+		margin-left: 680px;
+		margin-top: 1px;
+	}
+	#moment{
+		display: flex;
+		justify-content: center;
+	}
+</style>
+</head>
+
+<body>
+	<div id="backgrounddiv">
+		<img src="扫雷页眉装饰图片.webp" id="img_1">
+		<div id="moment"><span id="time">0</span></div>
+		<div id="outline">score:<span id="score1">0</span></div><!--得分装置-->
+		<div id="functiondiv">
+			<div onClick="judging_procedure()" id="play_1"></div>
+		</div>
+		
+	</div>
+</body>
+<script>
+	var time = document.getElementById("time");
+	var score1 = document.getElementById("score1");
+	var sec = 0;
+	var t = setInterval(function(){
+		sec ++;
+		time.innerHTML = sec;
+	},1000);
+	var score = 0;
+	var list = [];
+	var play_1 = document.getElementById("play_1");
+	var functiondiv = document.getElementById("functiondiv");//将生成的div添加到网页中
+	for(var i=0;i<10;i++){
+		var sj = Math.floor(Math.random()*81);
+		while(list.indexOf(sj)!=-1){
+			sj = Math.floor(Math.random()*81);
+		}
+		list.push(sj);
+	}
+//	console.log(list)
+	var flag = [];
+	for(var i=0;i<81;i++){
+		var div = document.createElement("div");//网页创建div元素
+		div.className = "box";//对每一个小盒子构成的集合进行编辑
+		div.id = i;
+		flag[i]=0;
+		
+		if(list.indexOf(i)>=0){
+			flag[i] = 1;
+		}
+		div.style.background = "";
+		div.style.backgroundPosition = "center";
+		div.style.backgroundSize = "50px 50px";
+		functiondiv.appendChild(div);
+	}
+	var box = document.getElementsByClassName("box");
+	for(var i=0;i<box.length;i++){
+		box[i].onmouseup = function(e){
+			if(e.button == 0){
+				if(flag[this.id]==1){//左键
+					this.style.background = "url('地雷图片.png')";
+					this.style.backgroundPosition = "center";
+					this.style.backgroundSize = "50px 50px";
+					clearInterval(t);
+					alert("Game Over");
+				}else{
+					var k = parseInt(this.id);
+					var cnt = 0;
+//					console.log(flag[k-1])
+//					console.log(k)
+//					console.log(k+1)
+					if(k%9==0){//最左列
+						if(flag[k+1]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k-8]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k-9]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+9]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+10]==1){
+							cnt=cnt+1;
+						}
+					}else if(k%9==8){//最右列
+						if(flag[k-1]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+8]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k-9]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+9]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k-10]==1){
+							cnt=cnt+1;
+						}
+					}else{
+						if(flag[k-1]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+1]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k-8]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+8]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k-9]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+9]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k-10]==1){
+							cnt=cnt+1;
+						}
+						if(flag[k+10]==1){
+							cnt=cnt+1;
+						}
+					}
+
+					this.innerHTML = cnt;
+				}
+			}else if(e.button == 2){//右键
+				if(flag[this.id]==1){
+					this.style.background = "url('扫雷小旗.png')";
+					this.style.backgroundPosition = "center";
+					this.style.backgroundSize = "50px 50px";
+					score = score+1;
+					if(score == 10){
+						alert("You win");
+						clearInterval(t);
+		}	
+				}
+				console.log(score1)
+				score1.innerHTML = score;
+				if(flag[this.id]==0){
+					alert("Game over");
+					clearInterval(t);
+				}
+			}
+		}
+		
+			}
+	document.oncontextmenu = function(e){
+		return false;
+	}
+</script>
+</html>

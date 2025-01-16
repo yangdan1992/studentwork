@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>word </title>
+	<style>
+		body{
+			background:#B5D7F5;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			
+		}
+		span{
+			color:#E88B8D;
+		}
+		h1{
+			display: flex;
+			justify-content: center;
+		}
+		.container{
+			width: 40%;
+		}
+		#map{
+			width: 480px;
+			height: 490px;
+			margin:auto;
+			background: #ffffff;
+			border-radius: 20px;
+			position: relative;
+		}
+		.letter{
+			font-size: 48px;
+			font-weight: bold;
+			width: 60px;
+			height: 60px;
+			float:left;
+			text-align: center;
+			line-height: 60px;
+			user-select: none;
+			cursor: pointer;
+			position: relative;
+		}
+		#word{
+			margin-top: 10px;
+			display:flex;
+			width: 100%;
+			justify:10px;
+		}
+		.word{
+			font-size: 24px;
+			font-weight: bold;
+			background: #ffffff;
+			padding: 0 10px;
+			border-radius: 50px;
+			margin-top: 10px;
+			display: flex;
+			justify-content: center;
+		}
+		span{
+			display: inline-block;
+			height: 0px;
+		}
+		.time{
+			font-size: 32px;
+			font-weight: bold;
+			text-align:left;
+			margin-top: 0px;
+			margin-left: 0px;
+		}
+		#time{
+			display: inline-block;
+		}
+	</style>
+</head>
+
+<body>
+	<h1><span>W</span>ord&nbsp;&nbsp; <span>S</span>earch</h1>
+	<div class="container">
+		<div class = "time">倒计时：<div id = "time">180</div>秒</div>
+		<div id="map"></div>
+		<div id="words"></div>
+	</div>
+</body>
+<script>
+var ALPABET = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var word_list = ["APPLE","FLASH","PIANO","DECAY","ALIVE"];
+var letter_list = new Array(8);
+for(var i=0;i<8;i++) letter_list[i] = new Array(8);
+for(var i=0;i<8;i++){
+	for(var j=0;j<8;j++){
+			var sj = Math.floor(Math.random()*ALPABET.length);
+			letter_list[i][j] = ALPABET[sj];
+	}
+}
+var flag = new Array(8);
+	var tag = new Array(8);
+for (var i=0;i<8;i++){
+	flag[i] = new Array(8)
+	tag[i] = new Array(8)
+	for (var j=0;j<8;j++){
+		flag[i][j] = 0; 
+	}
+}
+for(var i = 0;i < word_list.length;i++){
+	var placed = false;
+	while(!placed){
+		var dir = Math.floor(Math.random()*4);
+		var word = word_list[i];
+		if (dir == 0){
+			var row = Math.floor(Math.random()*8);
+			var col = Math.floor(Math.random()*(8 - word.length + 1));
+			if (!isOverlapping(word,row,col,dir)){
+				for (var j = 0;j < word.length;j++){
+						letter_list[row][col + j] = word[j];
+						flag[row][col + j] = 1;
+				}
+					placed = true
+			}
+		}else if (dir == 1){
+			var col = Math.floor(Math.random()*8);
+			var row = Math.floor(Math.random()*(8 - word.length + 1));
+			if (!isOverlapping(word,row,col,dir)){
+				for (var j = 0;j < word.length;j++){
+					letter_list[row + j][col] = word[j];
+					flag[row + j][col] = 1;
+				}
+					placed = true;
+			}
+		}else if (dir == 2){
+			var row = Math.floor(Math.random()*(8 - word.length + 1));
+			var col = Math.floor(Math.random()*(8 - word.length + 1));
+			if (!isOverlapping(word,row,col,dir)){
+				for (var j = 0;j < word.length;j++){
+					letter_list[row + j][col + j] = word[j];
+					flag[row + j][col + j] = 1;
+				}
+				placed = true;
+			}
+		}else if (dir == 3){
+			var row = Math.floor(Math.random()*(8 - word.length + 1));
+			var col = Math.floor(Math.random()*(8 - word.length + 1)+word.length - 1);
+			if (col < 8 && !isOverlapping(word,row,col,dir)){
+				for (var j = 0;j < word.length;j++){
+					letter_list[row + j][col - j] = word[j];
+					flag[row + j][col - j] = 1;
+				}
+				placed = true;
+			}
+		}
+	}
+}
+
+function isOverlapping(word,row,col,dir){
+	for (var i=0;i<word.length;i++){
+		var newRow,newCol;
+		switch(dir){
+			case 0:
+				newRow = row;
+				newCol = col + i;
+				break;
+			case 1:
+				newRow = row + i;
+				newCol = col;
+				break;
+			case 2:
+				newRow = row + i;
+				newCol = col + i;
+				break;
+			case 3:
+				newRow = row + i;
+				newCol = col - i;
+				break;
+		}
+		
+		if (newRow < 0 || newRow >= 8 || newCol < 0 || newCol >= 8 || flag[newRow][newCol] == 1){
+			return true;
+		}
+	}
+	return false;
+}
+var map = document.getElementById("map");
+for (var i=0;i<8;i++){
+	for(var j=0;j<8;j++){
+		var div = document.createElement("div");
+		div.className = "letter";
+		var span = document.createElement("span");
+		span.innerHTML = letter_list[i][j];
+		span.id = i * 8 + j;
+		div.appendChild(span);
+		map.appendChild(div);
+	}
+}
+var words = document.getElementById("words");
+for(var i=0;i<word_list.length;i++) {
+	var div = document.createElement("div");
+	div.className = "word";
+	div.innerHTML = word_list[i];
+	words.appendChild(div);
+}	
+var letters = document.getElementsByTagName("span");
+var letters_box = document.getElementsByClassName("letter");
+var words_div = document.getElementsByClassName("word");
+var isMousedown = false;
+var selectedElement = null;
+var answer = "";
+var selected_id = new Array();
+map.addEventListener('mousedown',function(e){
+	var target = e.target;
+	if(target.tagName == "SPAN" && selectedElement != target){
+		isMousedown = true;
+		selectedElement = target;
+	}
+});
+map.addEventListener('mousemove',function(e){
+	if(isMousedown){
+		var x = e.target.parentElement.offsetLeft;
+		var y = e.target.parentElement.offsetTop;
+		var row = Math.floor(y/60);
+		var col = Math.floor(x/60);
+		var targetElement = letters[row * 8 + col];
+		if(e.target.tagName == "SPAN" && targetElement != selectedElement){
+			answer += e.target.innerHTML;
+			selected_id.push(row * 8 + col);
+			selectedElement = targetElement;
+		}
+	}
+});
+var cnt = word_list.length;
+function getRandomColor(){
+	const letters = '0123456789ABCDEF'
+	let color = '#';
+	for(let i = 0 ;i < 6;i++){
+		color += letters[Math.floor(Math.random() * 16)];	
+	}
+	return color;
+}
+map.addEventListener('mouseup',function(){
+	isMousedown = false;
+	console.log(answer)
+	console.log(selected_id)
+	if(word_list.indexOf(answer) != -1){
+		var color = getRandomColor();
+		for(var i=0;i<selected_id.length;i++){
+			letters_box[selected_id[i]].style.backgroundColor =  color;
+		}
+		words_div[word_list.indexOf(answer)].style.background = color;
+		cnt --;
+		if (cnt == 0){
+			clearInterval(t);
+			
+		} 
+	}
+	answer = "";
+	selected_id = [];
+	selectedElement = null;
+	
+});
+var time = document.getElementById("time");
+var txt = 180;
+var t = setInterval(function(){
+	txt --;
+	time.innerHTML = txt;
+	if(txt == 0){
+		clearInterval(t);
+		alert("时间到");
+	}
+},1000);
+</script>
+</html>

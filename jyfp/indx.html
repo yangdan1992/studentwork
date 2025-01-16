@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style>
+	body{
+		display: flex;
+		width: 100%;
+		height: 100vh;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		background: #0A0909;
+	}
+	.container{
+		width: 1233px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.card{
+		width: 206.5px;
+		height: 300px;
+		background: green;
+		background-size: cover;
+		margin: 20px;
+		text-align: center;
+		line-height: 300px;
+		font-size: 24px;
+		font-weight: bold;
+		color: #fff;
+	}
+	</style>
+
+<body>
+	<div class="container">
+		
+	</div>
+</body>
+<script>
+	var state = 0;
+	var arr = ["李木","李木","影","影","钟离","钟离","芙宁娜","芙宁娜","温迪","温迪"];
+	arr.sort(()=>Math.random()-0.5);
+	console.log(arr)
+	var container = document.getElementsByClassName("container")[0];
+	for(var i=0;i<arr.length;i++){
+		var div = document.createElement("div");
+		div.id = i;
+		div.className = "card";
+		div.innerHTML = arr[i];
+		container.appendChild(div);
+	}
+	
+	var cards = document.getElementsByClassName('card');
+	setTimeout(function(){
+		for(var i=0;i<arr.length;i++){
+			cards[i].style.background = "url('扑克.png')";
+			cards[i].style.backgroundSize = "cover";
+			cards[i].innerHTML = "";
+		}
+	},2000);
+	var cnt = 0, idx;
+	
+	for(var i=0;i<cards.length;i++){
+		cards[i].onclick = function(){
+			this.style.background = "green";
+			this.innerHTML = arr[this.id];
+			var cur = this.id;
+			cnt ++;
+			if(cnt % 2 == 1) idx = this.id;
+			else{
+				setTimeout(function(){
+					console.log(idx,arr[idx])
+					console.log(cur,arr[cur])
+					if(arr[idx] == arr[cur]){
+						cards[cur].style.background = "#000";
+						cards[cur].innerHTML = "";
+						cards[idx].style.background = "#000";
+						cards[idx].innerHTML = "";
+					}else{
+						cards[cur].style.background = "url('扑克.png')";
+						cards[cur].style.backgroundSize = "cover";
+						cards[cur].innerHTML = "";
+						cards[idx].style.background = "url('扑克.png')";
+						cards[idx].innerHTML = "";
+						cards[idx].style.backgroundSize = "cover";
+					}
+				},2000);
+				
+			}
+			
+			
+		}
+	}
+	</script>	
+</html>

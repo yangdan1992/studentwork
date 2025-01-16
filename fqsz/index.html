@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<h1 class="title">番茄时钟</h1>
+	<div class="container">
+		<div id="add">
+			<img src="添加.png" onClick="add_show()">
+			<span id="add_txt">添加主题</span>
+			<input id="add_input" placeholder="请输入主题" onBlur="add_hide()">
+		</div>
+		<div class="txt">
+			目标时间：
+			<input id="time_input" value="0" onBlur="time_hide()">
+			<span id="time_txt" onClick="time_show()" style="cursor: pointer"></span>分钟
+		</div>
+		<div class="txt">专注时间：<span id="count_down">00:00</span>分钟</div>
+		<div class="control">
+			<div class="btn" id="start">
+				<img src="开始.png" onClick="start_count()">开始
+			</div>
+			<div class="btn" id="pause">
+				<img src="暂停.png" onClick="pause_count()">暂停
+			</div>
+			<div class="btn" id="continue">
+				<img src="开始.png" onClick="continue_count()">继续
+			</div>
+			<div class="btn" id="stop">
+				<img src="退出.png" onClick="location.reload()">退出
+			</div>
+		</div>
+	</div>
+</body>
+<style>
+	body{
+		display: flex;
+		width: 100%;
+		height: 100vh;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		flex-direction: column;
+	}
+	.container{
+		width: 30%;
+		height: 40vh;
+		background: #7F62E4;
+		border-radius: 20px;
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+	}
+	.container div{
+		margin-top: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	input{
+		font-size: 24px;
+		font-weight: bold;
+		height: 30px;
+		width: 50px;
+	}
+	img{
+		width: 30px;
+		margin-right: 5px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+	#add_input{
+		width: 200px;
+		display: none;
+	}
+	.btn{
+		margin-right: 15px;
+	}
+	#pause,#stop,#continue{
+		display: none;
+	}
+	</style>
+	<script>
+		var add = document.getElementById("add");
+		var add_txt = document.getElementById("add_txt");
+		var add_input = document.getElementById("add_input");
+		function add_show(){
+			add_txt.style.display = "none";
+			add_input.style.display = "inline-block";
+		}
+		function add_hide(){
+			add_txt.innerHTML = add_input.value;
+			add_txt.style.display = "inline-block";
+			add_input.value = "";
+			add_input.style.display = "none";
+		}
+		var time_input = document.getElementById("time_input");
+		var time_txt = document.getElementById("time_txt");
+		var count_down = document.getElementById("count_down");
+		time_txt.style.display = "none";
+		var time=0;
+		function time_hide(){
+			time_txt.innerHTML = time_input.value;
+			time_txt.style.display = "inline-block";
+			time = parseInt(time_input.value);
+			var format_time="";
+			if(time < 10) format_time = "0" + time + ":00";
+			else format_time = time + ":00";
+			count_down.innerHTML = format_time;
+			time_input.value="0";
+			time_input.style.display = "none";
+		}
+		function time_show(){
+			time_txt.style.display = "none";
+			time_input.style.display = "inline-block";
+		}
+		var start = document.getElementById("start");
+		var pause = document.getElementById("pause");
+		var Continue = document.getElementById("continue");
+		var stop = document.getElementById("stop");
+		var minute = 0, sec = 0;
+		var t;
+		function count_down_func(){
+			if(sec == 0 && minute == 0){
+				clearInterval(t);
+				alert("时间到");
+				location.reload();
+			}
+			if(sec == 0){
+				sec =60;
+				minute --;
+			}
+			sec --;
+			var format_sec="", format_minute = "";
+			if(sec < 10) format_sec = "0" + sec;
+			else format_sec = sec;
+			if(minute < 10) format_minute = "0" + minute;
+			else format_minute = minute;
+			count_down.innerHTML = format_minute + ":" + format_sec;
+		}
+		function start_count(){
+			start.style.display = "none";
+			pause.style.display = "block";
+			stop.style.display = "block";
+			minute = time;
+			t = setInterval(count_down_func,1000);
+		}
+		function pause_count(){
+			pause.style.display = "none";
+			Continue.style.display = "block";
+			clearInterval(t);
+		}
+		function continue_count(){
+			pause.style.display = "block";
+			Continue.style.display = "none";
+			t = setInterval(count_down_func,1000);
+		}
+	</script>
+
+</html>
