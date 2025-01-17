@@ -1,0 +1,240 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>连续生成方块效果</title>
+<style>
+	
+	
+	body{
+		
+		width:100%;
+		height:100vh;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+		overflow:hidden;
+		background: #EFDEDE;
+		margin:0;
+		
+		}
+		
+	
+	#container{
+		background:#FFFDFD;
+		width:70%;
+		height:60vh;
+		position:relative;
+		overflow:hidden;
+		border-radius: 25px;
+	}
+	.square{
+		position:absolute;
+		bottom:0;
+		background:black;
+		transition:left 0.05 linear;
+	}
+	#player {
+		position:absolute;
+		left:50px;
+		background:red;
+		width:50px;
+		height:50px;
+		transition:bottom 0.1s ease-out,left 0.1s ease-out;
+	}
+	.score{
+	position:absolute;
+	right:30px;
+	top:10px;
+	font-weight:bold;
+	font-size:18px;
+}
+		#tip{
+		position:absolute;
+		top:40%;
+		left:20%;
+		}
+	
+	#result{
+			width:100%;
+			height:100vh;
+			position:absolute;
+			top:0;
+			left:0;
+			background:#000;
+			display:none;
+			color:#fff;
+			align-items:center;
+			justify-content:center;
+			flex-direction:column;
+	}
+		
+		button{
+			font-size:24px;
+			font-weight:bold;
+			display: block;
+		}
+	</style>
+	</head>
+	<body>
+		
+		<div id="container">
+			<div id="player"></div>
+			<div class="score">得分：<span id="score">00</span></div>
+			<h1 id="tip">按下空格让小方块掉落到第一个大方块上吧</h1>
+		</div>
+		
+		<div id="result">
+			<div>
+				
+			</div>
+			<h1>游戏结束</h1>
+			<h1> 得分:<span id="res">00</span></h1>
+			<button onclick="location.reload()">重新开始</button>
+		</div>
+		
+	</body>
+
+	<script>
+		const container=document.getElementById('container');
+		const player=document.getElementById("player");
+		let squares=[];
+		let nextSquareId=0;
+		const speed=5;
+		const minSize=50;
+		const maxwidth=container.clientWidth *2/3;
+		const maxHeight=container.clientHeight /2;
+		var score = 0;
+		var res = document.getElementById("res");
+		var Score = document.getElementById("score");
+			
+		function getRandomColor(){
+			const letters ='0123456789ABCDEF';
+			let color='#'; 
+			for(let i = 0;i<6;i++){
+				color +=letters[Math.floor(Math.random() *16)];
+			}
+			return color;
+		}
+			
+		function getRandomSize(min,max){
+			return Math.floor(Math.random()*(max-min+1)) +min;
+
+		}
+		function createSquare(){
+			const square=document.createElement('div');
+			square.classList.add('square');
+			square.id=`square-${nextSquareId++}`;
+			square.style.background=getRandomColor();
+		   square.style.left=`${container.clientWidth}px`;
+
+			const blockWidth=getRandomSize(minSize,maxwidth);
+			const blockHeight= getRandomSize(minSize,maxHeight);
+			square.style.width=`${blockWidth}px`;
+			square.style.height=`${blockHeight}px`;
+
+			container.appendChild(square);
+			squares.push(square);
+
+			animateSquare(square);
+		}
+					
+		function animateSquare(square){
+			let squareLeft= parseInt(square.style.left,10);
+
+			function animate(){
+				squareLeft -= speed;
+				square.style.left= `${squareLeft}px`;
+				
+				if(squares.length>0){
+					const rightmostSquare= squares[squares.length - 1];
+					const distanceToRightEdge= container.clientWidth-rightmostSquare.offsetLeft -
+					+rightmostSquare.offsetWidth;
+					if (distanceToRightEdge > getRandomSize(100,200)){
+						createSquare();
+					}
+				}
+				
+				if(squareLeft + square.offsetWidth < 0){
+					container. removeChild(square);
+				  	squares = squares.filter(s => s!== square);
+					score +=1;
+					Score.innerHTML = score;
+			   	}else {
+			   		requestAnimationFrame(animate);
+		 		}
+			}
+			requestAnimationFrame(animate);
+		}
+
+		createSquare();
+		const jumpHeight = 150;
+		let isJumping = false;
+		let jumpStartTime = null;
+		let playerBottom = container.clientHeight-100;
+		let nxtHeight;
+		let tag = 0;
+
+		document.addEventListener('keydown',(event) =>{
+			if(event.key===' '&& !isJumping){
+				if(tag==0){nxtHeight = parseInt(squares[0].style.height);
+						   tag=1;
+						   tip.style.display = "none";
+						  }else nxtHeight =parseInt(squares[1].style.height);
+				updatePlayerPosition(performance.now());
+				isJumping=true;
+				jumpStartTime = performance.now();
+				player.style.bottom =`${playerBottom - jumpHeight}px`;
+			}
+		});
+		function updatePlayerPosition(time){
+			if(isJumping){
+				const elapsedTime = time-jumpStartTime;
+				const jumpDuration = 500;
+				const jumpProgress = Math.min(elapsedTime / jumpDuration,1);
+
+				const jumpFraction = 1-Math.pow(1-jumpProgress,2);
+				const currentJumpHeight= jumpHeight *jumpFraction;
+
+				player.style.bottom = `${playerBottom - currentJumpHeight}px`;
+				if(jumpProgress ===1){
+					isJumping = false;	
+					while(parseInt(player.style.bottom)> nxtHeight){
+						player.style.bottom = `${parseInt(player.style.bottom)-1}px`;
+					}
+					if(parseInt(squares[0].style.left)< - 50 || parseInt(squares[0].style.left)> 120){
+					   while(parseInt(player.style.bottom)> 0 ){
+						player.style.bottom = `${parseInt(player.style.bottom)-1}px`;
+						   setTimeout(function(){
+						result.style.display ="flex";
+						res.innerHTML = score;
+					},500);
+					}
+					}
+					
+					 
+				}
+			}else{
+				while(player.style.bottom > nxtHeight){
+					player.style.bottom = `${parseInt(player.style.bottom)-1}px`;
+												  
+				}
+			}
+			requestAnimationFrame(updatePlayerPosition);
+					
+				
+			}
+		
+		player.style.bottom=`${playerBottom}px`
+
+		
+		
+		
+		
+
+		</script>
+		
+</html>
+

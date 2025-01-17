@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style>
+	body{
+		display:flex;
+		width:100%;
+		height:100vh;
+		align-items: center;
+		justify-content: center;
+		background:#E9E9E9;
+		overflow:hidden;
+		flex-direction: column;
+	}
+	.container{
+		width:524px;
+		height:524px;
+	}
+	.box{
+		width:125px;
+		height: 125px;
+		background: #fff;
+		float:left;
+		border-radius: 15px;
+		margin:3px;
+		font-size: 32px;
+		font-weight: bold;
+		text-align: center;
+		line-height: 125px;
+		cursor:pointer;
+	}
+	.control{
+		margin-top: 20px;
+	}
+	select,button{
+		font-size: 24px;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+</style>
+<body>
+	<h1><span id="minute">00</span>:<span id="second">00</span></h1>
+	<div class="container">
+	</div>
+	<div class="control">
+	    <select id="size">
+			<option>请选择难度</option>
+			<option value="4">4×4</option>
+			<option value="5">5×5</option>
+			<option value="6">6×6</option>
+		</select>
+		<button onclick="start()">开始</button>
+	</div>
+</body>
+<script>
+	var container=document.getElementsByClassName("container")[0];
+	for(var i=0;i<16;i++){
+		var div=document.createElement("div");
+		div.className="box";
+		div.innerHTML=i+1;
+		div.id=i+1;
+		container.appendChild(div);
+	}
+	var num=new Array();
+	var select_size;
+	function init(){
+		var size=document.getElementById("size");
+		var option=document.getElementsByTagName("option");
+		select_size=option[size.selectedIndex].value;
+		console.log(select_size)
+		
+		num=[];
+		for(var i=1;i<=select_size*select_size;i++)num.push(i);
+		
+		container.innerHTML="";
+		num.sort(()=>Math.random()-0.5);
+		for(var i=0;i<select_size*select_size;i++){
+			var div=document.createElement("div");
+			div.className="box";
+			div.innerHTML=num[i];
+			div.id=num[i];
+			var dimension;
+			if(select_size==6)dimension=79;
+			else if(select_size==5)dimension=98;
+			else dimension=125;
+			div.style.width=dimension+"px";
+			div.style.height=dimension+"px";
+			div.style.lineHeight=dimension+"px";
+			container.appendChild(div);
+		}
+	}
+	var minute=document.getElementById("minute");
+	var second=document.getElementById("second");
+	var minu=0,sec=0;
+	function time(){
+		
+		sec ++;
+		console.log(sec);
+		if(sec> 60){
+			minu ++;
+			sec=0;
+		}
+		
+		if(sec < 10)second.innerHTML="0"+sec;
+		else second.innerHTML=sec;
+		if(minu < 10)minute.innerHTML="0"+minu;
+		else minute.innerHTML=minu;
+	}
+	
+	var box=document.getElementsByClassName("box");
+	function start(){
+		init();
+		
+		minu=0;
+		sec=0;
+		var t=setInterval(time,1000);
+		
+		var last=0;
+		for(var i=0;i<select_size*select_size;i++){
+			box[i].onclick=function(){
+				if(this.id==last+1){
+					this.style.background="pink";
+					last ++;
+					if(last == select_size*select_size){
+						clearInterval(t);
+						alert("成功！")
+					}
+				}else{
+					this.style.background="grey";
+				}
+			}
+		}
+	}
+	</script>
+</html>
